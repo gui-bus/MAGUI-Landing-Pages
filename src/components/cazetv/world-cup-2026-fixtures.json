@@ -2737,8 +2737,28 @@
       "stadium": "Mercedes-Benz Stadium",
       "hostCity": "atlanta",
       "matchUrl": "https://www.youtube.com/@CazeTV",
-      "homeScore": null,
-      "awayScore": null
+      "homeScore": 2,
+      "awayScore": 1,
+      "events": [
+        {
+          "tipo": "gol",
+          "minuto": "7'",
+          "autor": "Brian CIPENGA",
+          "time": "fora"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "75'",
+          "autor": "Harry KANE",
+          "time": "casa"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "86'",
+          "autor": "Harry KANE",
+          "time": "casa"
+        }
+      ]
     },
     {
       "matchNumber": 81,
@@ -2751,8 +2771,28 @@
       "stadium": "Levi's Stadium",
       "hostCity": "san-francisco",
       "matchUrl": "https://www.youtube.com/@CazeTV",
-      "homeScore": null,
-      "awayScore": null
+      "homeScore": 2,
+      "awayScore": 0,
+      "events": [
+        {
+          "tipo": "gol",
+          "minuto": "45'",
+          "autor": "Folarin BALOGUN",
+          "time": "casa"
+        },
+        {
+          "tipo": "cartao_vermelho",
+          "minuto": "64'",
+          "autor": "Folarin BALOGUN",
+          "time": "casa"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "82'",
+          "autor": "Malik TILLMAN",
+          "time": "casa"
+        }
+      ]
     },
     {
       "matchNumber": 82,
@@ -2765,8 +2805,40 @@
       "stadium": "Lumen Field",
       "hostCity": "seattle",
       "matchUrl": "https://www.youtube.com/@CazeTV",
-      "homeScore": null,
-      "awayScore": null
+      "homeScore": 3,
+      "awayScore": 2,
+      "events": [
+        {
+          "tipo": "gol",
+          "minuto": "24'",
+          "autor": "Habib DIARRA",
+          "time": "fora"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "51'",
+          "autor": "Ismaila SARR",
+          "time": "fora"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "86'",
+          "autor": "Romelu LUKAKU",
+          "time": "casa"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "89'",
+          "autor": "Youri TIELEMANS",
+          "time": "casa"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "120'+5' (J)",
+          "autor": "Youri TIELEMANS",
+          "time": "casa"
+        }
+      ]
     },
     {
       "matchNumber": 83,
