@@ -2851,8 +2851,28 @@
       "stadium": "BMO Field",
       "hostCity": "toronto",
       "matchUrl": "https://www.youtube.com/@CazeTV",
-      "homeScore": null,
-      "awayScore": null
+      "homeScore": 2,
+      "awayScore": 1,
+      "events": [
+        {
+          "tipo": "gol",
+          "minuto": "53'",
+          "autor": "Ivan PERISIC",
+          "time": "fora"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "68' (J)",
+          "autor": "CRISTIANO RONALDO",
+          "time": "casa"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "90'+4'",
+          "autor": "GONCALO RAMOS",
+          "time": "casa"
+        }
+      ]
     },
     {
       "matchNumber": 84,
@@ -2865,8 +2885,28 @@
       "stadium": "SoFi Stadium",
       "hostCity": "los-angeles",
       "matchUrl": "https://www.youtube.com/@CazeTV",
-      "homeScore": null,
-      "awayScore": null
+      "homeScore": 3,
+      "awayScore": 0,
+      "events": [
+        {
+          "tipo": "gol",
+          "minuto": "36'",
+          "autor": "Mikel OYARZABAL",
+          "time": "casa"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "66'",
+          "autor": "Pedro PORRO",
+          "time": "casa"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "89'",
+          "autor": "Mikel OYARZABAL",
+          "time": "casa"
+        }
+      ]
     },
     {
       "matchNumber": 85,
@@ -2879,8 +2919,22 @@
       "stadium": "BC Place",
       "hostCity": "vancouver",
       "matchUrl": "https://www.youtube.com/@CazeTV",
-      "homeScore": null,
-      "awayScore": null
+      "homeScore": 2,
+      "awayScore": 0,
+      "events": [
+        {
+          "tipo": "gol",
+          "minuto": "10'",
+          "autor": "Breel EMBOLO",
+          "time": "casa"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "46'",
+          "autor": "Dan NDOYE",
+          "time": "casa"
+        }
+      ]
     },
     {
       "matchNumber": 86,
