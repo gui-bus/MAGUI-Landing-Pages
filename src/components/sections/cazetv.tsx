@@ -14,7 +14,6 @@ import FixturesFilter from "../cazetv/fixtures-filter";
 import FixtureCard from "../cazetv/fixture-card";
 import GroupTables from "../cazetv/group-tables";
 import Bracket from "../cazetv/bracket";
-import BrazilWidget from "../cazetv/brazil-widget";
 import StatsTab from "../cazetv/stats-tab";
 import Footer from "../cazetv/footer";
 import { resolvePlaceholder } from "../cazetv/groups-data";
@@ -454,13 +453,6 @@ export default function CazeTVLanding() {
       <section className="mx-auto w-full px-4 py-8 sm:px-6 lg:px-8 flex-grow">
         {activeTab === "jogos" ? (
           <>
-            {/* Brazil Special Widget */}
-            <BrazilWidget
-              fixtures={fixtures}
-              teamIsoCodes={teamIsoCodes}
-              onShowDetails={handleShowDetails}
-            />
-
             {/* Filters Section Anchor */}
             <div id="jogos-filters" className="flex flex-col gap-6">
               {/* Game State Buttons/Pills */}

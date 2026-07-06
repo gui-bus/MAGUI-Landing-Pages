@@ -2947,8 +2947,40 @@
       "stadium": "Hard Rock Stadium",
       "hostCity": "miami",
       "matchUrl": "https://www.youtube.com/@CazeTV",
-      "homeScore": null,
-      "awayScore": null
+      "homeScore": 3,
+      "awayScore": 2,
+      "events": [
+        {
+          "tipo": "gol",
+          "minuto": "29'",
+          "autor": "Lionel MESSI",
+          "time": "casa"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "59'",
+          "autor": "DEROY DUARTE",
+          "time": "fora"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "92'",
+          "autor": "Lisandro MARTINEZ",
+          "time": "casa"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "103'",
+          "autor": "SIDNY LOPES CABRAL",
+          "time": "fora"
+        },
+        {
+          "tipo": "gol_contra",
+          "minuto": "111'",
+          "autor": "DINEY BORGES",
+          "time": "casa"
+        }
+      ]
     },
     {
       "matchNumber": 87,
@@ -2961,8 +2993,16 @@
       "stadium": "Arrowhead Stadium",
       "hostCity": "kansas-city",
       "matchUrl": "https://www.youtube.com/@CazeTV",
-      "homeScore": null,
-      "awayScore": null
+      "homeScore": 1,
+      "awayScore": 0,
+      "events": [
+        {
+          "tipo": "gol",
+          "minuto": "14'",
+          "autor": "Jhon ARIAS",
+          "time": "casa"
+        }
+      ]
     },
     {
       "matchNumber": 88,
@@ -2975,8 +3015,26 @@
       "stadium": "AT&T Stadium",
       "hostCity": "dallas",
       "matchUrl": "https://www.youtube.com/@CazeTV",
-      "homeScore": null,
-      "awayScore": null
+      "homeScore": 1,
+      "awayScore": 1,
+      "homePenalties": 2,
+      "awayPenalties": 4,
+      "winner": "Egito",
+      "vencedor": "Egito",
+      "events": [
+        {
+          "tipo": "gol",
+          "minuto": "13'",
+          "autor": "EMAM ASHOUR",
+          "time": "fora"
+        },
+        {
+          "tipo": "gol_contra",
+          "minuto": "55'",
+          "autor": "MOHAMED HANY",
+          "time": "casa"
+        }
+      ]
     },
     {
       "matchNumber": 89,
@@ -2984,13 +3042,21 @@
       "kickoffUtc": "2026-07-04T21:00:00Z",
       "stage": "round-of-16",
       "group": null,
-      "homeTeam": "Vencedor Jogo 74",
-      "awayTeam": "Vencedor Jogo 77",
+      "homeTeam": "Paraguai",
+      "awayTeam": "França",
       "stadium": "Lincoln Financial Field",
       "hostCity": "philadelphia",
       "matchUrl": "https://www.youtube.com/@CazeTV",
-      "homeScore": null,
-      "awayScore": null
+      "homeScore": 0,
+      "awayScore": 1,
+      "events": [
+        {
+          "tipo": "gol",
+          "minuto": "70' (J)",
+          "autor": "Kylian MBAPPE",
+          "time": "fora"
+        }
+      ]
     },
     {
       "matchNumber": 90,
@@ -2998,13 +3064,33 @@
       "kickoffUtc": "2026-07-04T17:00:00Z",
       "stage": "round-of-16",
       "group": null,
-      "homeTeam": "Vencedor Jogo 73",
-      "awayTeam": "Vencedor Jogo 75",
+      "homeTeam": "Canadá",
+      "awayTeam": "Marrocos",
       "stadium": "NRG Stadium",
       "hostCity": "houston",
       "matchUrl": "https://www.youtube.com/@CazeTV",
-      "homeScore": null,
-      "awayScore": null
+      "homeScore": 0,
+      "awayScore": 3,
+      "events": [
+        {
+          "tipo": "gol",
+          "minuto": "50'",
+          "autor": "Azzedine OUNAHI",
+          "time": "fora"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "82'",
+          "autor": "Azzedine OUNAHI",
+          "time": "fora"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "90'+8'",
+          "autor": "Soufiane RAHIMI",
+          "time": "fora"
+        }
+      ]
     },
     {
       "matchNumber": 91,
@@ -3012,13 +3098,33 @@
       "kickoffUtc": "2026-07-05T20:00:00Z",
       "stage": "round-of-16",
       "group": null,
-      "homeTeam": "Vencedor Jogo 76",
-      "awayTeam": "Vencedor Jogo 78",
+      "homeTeam": "Brasil",
+      "awayTeam": "Noruega",
       "stadium": "MetLife Stadium",
       "hostCity": "new-york",
       "matchUrl": "https://www.youtube.com/@CazeTV",
-      "homeScore": null,
-      "awayScore": null
+      "homeScore": 1,
+      "awayScore": 2,
+      "events": [
+        {
+          "tipo": "gol",
+          "minuto": "79'",
+          "autor": "Erling HAALAND",
+          "time": "fora"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "90'",
+          "autor": "Erling HAALAND",
+          "time": "fora"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "90'+10' (J)",
+          "autor": "NEYMAR JR",
+          "time": "casa"
+        }
+      ]
     },
     {
       "matchNumber": 92,
@@ -3026,13 +3132,51 @@
       "kickoffUtc": "2026-07-06T00:00:00Z",
       "stage": "round-of-16",
       "group": null,
-      "homeTeam": "Vencedor Jogo 79",
-      "awayTeam": "Vencedor Jogo 80",
+      "homeTeam": "México",
+      "awayTeam": "Inglaterra",
       "stadium": "Estadio Azteca",
       "hostCity": "mexico-city",
       "matchUrl": "https://www.youtube.com/@CazeTV",
-      "homeScore": null,
-      "awayScore": null
+      "homeScore": 2,
+      "awayScore": 3,
+      "events": [
+        {
+          "tipo": "gol",
+          "minuto": "36'",
+          "autor": "Jude BELLINGHAM",
+          "time": "fora"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "38'",
+          "autor": "Jude BELLINGHAM",
+          "time": "fora"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "42'",
+          "autor": "Julian QUINONES",
+          "time": "casa"
+        },
+        {
+          "tipo": "cartao_vermelho",
+          "minuto": "54'",
+          "autor": "Jarell QUANSAH",
+          "time": "fora"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "60' (J)",
+          "autor": "Harry KANE",
+          "time": "fora"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "69' (J)",
+          "autor": "Raul JIMENEZ",
+          "time": "casa"
+        }
+      ]
     },
     {
       "matchNumber": 93,
@@ -3040,8 +3184,8 @@
       "kickoffUtc": "2026-07-06T19:00:00Z",
       "stage": "round-of-16",
       "group": null,
-      "homeTeam": "Vencedor Jogo 83",
-      "awayTeam": "Vencedor Jogo 84",
+      "homeTeam": "Portugal",
+      "awayTeam": "Espanha",
       "stadium": "AT&T Stadium",
       "hostCity": "dallas",
       "matchUrl": "https://www.youtube.com/@CazeTV",
@@ -3054,8 +3198,8 @@
       "kickoffUtc": "2026-07-07T00:00:00Z",
       "stage": "round-of-16",
       "group": null,
-      "homeTeam": "Vencedor Jogo 81",
-      "awayTeam": "Vencedor Jogo 82",
+      "homeTeam": "Estados Unidos",
+      "awayTeam": "Bélgica",
       "stadium": "Lumen Field",
       "hostCity": "seattle",
       "matchUrl": "https://www.youtube.com/@CazeTV",
@@ -3068,8 +3212,8 @@
       "kickoffUtc": "2026-07-07T16:00:00Z",
       "stage": "round-of-16",
       "group": null,
-      "homeTeam": "Vencedor Jogo 86",
-      "awayTeam": "Vencedor Jogo 88",
+      "homeTeam": "Argentina",
+      "awayTeam": "Egito",
       "stadium": "Mercedes-Benz Stadium",
       "hostCity": "atlanta",
       "matchUrl": "https://www.youtube.com/@CazeTV",
@@ -3082,8 +3226,8 @@
       "kickoffUtc": "2026-07-07T20:00:00Z",
       "stage": "round-of-16",
       "group": null,
-      "homeTeam": "Vencedor Jogo 85",
-      "awayTeam": "Vencedor Jogo 87",
+      "homeTeam": "Suíça",
+      "awayTeam": "Colômbia",
       "stadium": "BC Place",
       "hostCity": "vancouver",
       "matchUrl": "https://www.youtube.com/@CazeTV",
