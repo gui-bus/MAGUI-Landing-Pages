@@ -3189,8 +3189,16 @@
       "stadium": "AT&T Stadium",
       "hostCity": "dallas",
       "matchUrl": "https://www.youtube.com/@CazeTV",
-      "homeScore": null,
-      "awayScore": null
+      "homeScore": 0,
+      "awayScore": 1,
+      "events": [
+        {
+          "tipo": "gol",
+          "minuto": "90'+1'",
+          "autor": "Mikel MERINO",
+          "time": "fora"
+        }
+      ]
     },
     {
       "matchNumber": 94,
@@ -3203,8 +3211,40 @@
       "stadium": "Lumen Field",
       "hostCity": "seattle",
       "matchUrl": "https://www.youtube.com/@CazeTV",
-      "homeScore": null,
-      "awayScore": null
+      "homeScore": 1,
+      "awayScore": 4,
+      "events": [
+        {
+          "tipo": "gol",
+          "minuto": "31'",
+          "autor": "Malik TILLMAN",
+          "time": "casa"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "33'",
+          "autor": "Charles DE KETELAERE",
+          "time": "fora"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "PKO",
+          "autor": "Charles DE KETELAERE",
+          "time": "fora"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "57'",
+          "autor": "Hans VANAKEN",
+          "time": "fora"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "90'+3'",
+          "autor": "Romelu LUKAKU",
+          "time": "fora"
+        }
+      ]
     },
     {
       "matchNumber": 95,
@@ -3217,8 +3257,46 @@
       "stadium": "Mercedes-Benz Stadium",
       "hostCity": "atlanta",
       "matchUrl": "https://www.youtube.com/@CazeTV",
-      "homeScore": null,
-      "awayScore": null
+      "homeScore": 3,
+      "awayScore": 2,
+      "events": [
+        {
+          "tipo": "gol",
+          "minuto": "15'",
+          "autor": "YASSER IBRAHIM",
+          "time": "fora"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "67'",
+          "autor": "MOSTAFA ZICO",
+          "time": "fora"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "79'",
+          "autor": "Cristian ROMERO",
+          "time": "casa"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "83'",
+          "autor": "Lionel MESSI",
+          "time": "casa"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "90'+2'",
+          "autor": "Enzo FERNANDEZ",
+          "time": "casa"
+        },
+        {
+          "tipo": "cartao_vermelho",
+          "minuto": "90'+4'",
+          "autor": "SAAFAN ELSAGHIR (Staff)",
+          "time": "fora"
+        }
+      ]
     },
     {
       "matchNumber": 96,
@@ -3231,8 +3309,13 @@
       "stadium": "BC Place",
       "hostCity": "vancouver",
       "matchUrl": "https://www.youtube.com/@CazeTV",
-      "homeScore": null,
-      "awayScore": null
+      "homeScore": 0,
+      "awayScore": 0,
+      "homePenalties": 4,
+      "awayPenalties": 3,
+      "winner": "Suíça",
+      "vencedor": "Suíça",
+      "events": []
     },
     {
       "matchNumber": 97,
@@ -3240,13 +3323,27 @@
       "kickoffUtc": "2026-07-09T20:00:00Z",
       "stage": "quarter-finals",
       "group": null,
-      "homeTeam": "Vencedor Jogo 89",
-      "awayTeam": "Vencedor Jogo 90",
+      "homeTeam": "França",
+      "awayTeam": "Marrocos",
       "stadium": "Gillette Stadium",
       "hostCity": "boston",
       "matchUrl": "https://www.youtube.com/@CazeTV",
-      "homeScore": null,
-      "awayScore": null
+      "homeScore": 2,
+      "awayScore": 0,
+      "events": [
+        {
+          "tipo": "gol",
+          "minuto": "60'",
+          "autor": "Kylian MBAPPE",
+          "time": "casa"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "66'",
+          "autor": "Ousmane DEMBELE",
+          "time": "casa"
+        }
+      ]
     },
     {
       "matchNumber": 98,
@@ -3254,13 +3351,33 @@
       "kickoffUtc": "2026-07-10T19:00:00Z",
       "stage": "quarter-finals",
       "group": null,
-      "homeTeam": "Vencedor Jogo 93",
-      "awayTeam": "Vencedor Jogo 94",
+      "homeTeam": "Espanha",
+      "awayTeam": "Bélgica",
       "stadium": "SoFi Stadium",
       "hostCity": "los-angeles",
       "matchUrl": "https://www.youtube.com/@CazeTV",
-      "homeScore": null,
-      "awayScore": null
+      "homeScore": 2,
+      "awayScore": 1,
+      "events": [
+        {
+          "tipo": "gol",
+          "minuto": "30'",
+          "autor": "Fabian RUIZ",
+          "time": "casa"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "41'",
+          "autor": "Charles DE KETELAERE",
+          "time": "fora"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "88'",
+          "autor": "Mikel MERINO",
+          "time": "casa"
+        }
+      ]
     },
     {
       "matchNumber": 99,
@@ -3268,8 +3385,8 @@
       "kickoffUtc": "2026-07-11T21:00:00Z",
       "stage": "quarter-finals",
       "group": null,
-      "homeTeam": "Vencedor Jogo 91",
-      "awayTeam": "Vencedor Jogo 92",
+      "homeTeam": "Noruega",
+      "awayTeam": "Inglaterra",
       "stadium": "Hard Rock Stadium",
       "hostCity": "miami",
       "matchUrl": "https://www.youtube.com/@CazeTV",
@@ -3282,8 +3399,8 @@
       "kickoffUtc": "2026-07-12T01:00:00Z",
       "stage": "quarter-finals",
       "group": null,
-      "homeTeam": "Vencedor Jogo 95",
-      "awayTeam": "Vencedor Jogo 96",
+      "homeTeam": "Argentina",
+      "awayTeam": "Suíça",
       "stadium": "Arrowhead Stadium",
       "hostCity": "kansas-city",
       "matchUrl": "https://www.youtube.com/@CazeTV",
@@ -3296,8 +3413,8 @@
       "kickoffUtc": "2026-07-14T19:00:00Z",
       "stage": "semi-finals",
       "group": null,
-      "homeTeam": "Vencedor Jogo 97",
-      "awayTeam": "Vencedor Jogo 98",
+      "homeTeam": "França",
+      "awayTeam": "Espanha",
       "stadium": "AT&T Stadium",
       "hostCity": "dallas",
       "matchUrl": "https://www.youtube.com/@CazeTV",
