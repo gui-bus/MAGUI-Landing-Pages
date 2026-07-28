@@ -62,7 +62,9 @@ describe('SEO & Metadata Utils', () => {
     it('deve gerar os metadados padrões com as propriedades essenciais', () => {
       const metadata = buildDefaultMetadata('https://portfolio.magui.studio');
       expect(metadata.title).toContain('MAGUI.studio');
-      expect((metadata.openGraph as any)?.type).toBe('website');
+      
+      const og = metadata.openGraph as Record<string, unknown>;
+      expect(og?.type).toBe('website');
       expect(metadata.openGraph?.locale).toBe('pt_BR');
       expect(metadata.openGraph?.images).toBeDefined();
     });
@@ -76,7 +78,13 @@ describe('SEO & Metadata Utils', () => {
       expect(metadata.alternates?.canonical).toBe(
         'https://portfolio.magui.studio/projetos/nacho-libre'
       );
-      expect((metadata.openGraph?.images as any)?.[0]).toEqual({
+      
+      const images = metadata.openGraph?.images;
+      const firstImage = Array.isArray(images)
+        ? (images[0] as Record<string, unknown>)
+        : (images as Record<string, unknown>);
+        
+      expect(firstImage).toEqual({
         url: mockEntry.cardImage,
         alt: 'Nacho Libre | Projeto do Portfólio MAGUI.studio',
       });

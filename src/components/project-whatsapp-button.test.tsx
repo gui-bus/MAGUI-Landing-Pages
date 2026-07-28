@@ -5,15 +5,15 @@ import { ProjectWhatsappButton } from './project-whatsapp-button';
 import { buildWhatsappHref, WhatsappButton } from './whatsapp-button';
 
 vi.mock('next/link', () => ({
-  default: ({ children, href, ...props }: any) => (
-    <a href={href} {...props}>
-      {children}
+  default: ({ children, href, ...props }: Record<string, unknown>) => (
+    <a href={href as string} {...props}>
+      {children as React.ReactNode}
     </a>
   ),
 }));
 
 vi.mock('@phosphor-icons/react/ssr', async (importOriginal) => {
-  const actual = (await importOriginal()) as any;
+  const actual = (await importOriginal()) as Record<string, unknown>;
   return {
     ...actual,
     WhatsappLogoIcon: () => <span data-testid="whatsapp-icon" />,
