@@ -1,7 +1,7 @@
 <div align="center">
   <br/>
   <br/>
-  <img src="./public/utils/page-banner.webp" alt="MAGUI Landing Pages Logo" width="600" />
+  <img src="./public/utils/logo.svg" alt="MAGUI Landing Pages Logo" width="900" />
 </div>
 
 <br />
