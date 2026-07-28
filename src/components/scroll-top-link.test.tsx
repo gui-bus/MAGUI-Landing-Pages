@@ -30,7 +30,6 @@ describe('ScrollTopLink Component', () => {
   });
 
   it('deve scrollar até a posição do elemento de destino se ele existir no documento', () => {
-    // Criar elemento de destino fictício
     const targetDiv = document.createElement('div');
     targetDiv.id = 'inicio';
     vi.spyOn(targetDiv, 'getBoundingClientRect').mockReturnValue({
@@ -38,7 +37,6 @@ describe('ScrollTopLink Component', () => {
     } as DOMRect);
     document.body.appendChild(targetDiv);
 
-    // Definir scrollY mockado
     Object.defineProperty(window, 'scrollY', { value: 100, writable: true });
 
     render(<ScrollTopLink targetId="inicio">Voltar ao Topo</ScrollTopLink>);
@@ -47,7 +45,7 @@ describe('ScrollTopLink Component', () => {
     fireEvent.click(link);
 
     expect(window.scrollTo).toHaveBeenCalledWith({
-      top: 600, // top (500) + scrollY (100)
+      top: 600,
       behavior: 'smooth',
     });
   });

@@ -11,7 +11,6 @@ import {
 } from './seo';
 import type { SectionEntry } from '@/components/sections/registry';
 
-// Mock do headers do next/headers
 vi.mock('next/headers', () => ({
   headers: vi.fn().mockImplementation(async () => {
     const headersMap = new Map();
@@ -63,7 +62,7 @@ describe('SEO & Metadata Utils', () => {
     it('deve gerar os metadados padrões com as propriedades essenciais', () => {
       const metadata = buildDefaultMetadata('https://portfolio.magui.studio');
       expect(metadata.title).toContain('MAGUI.studio');
-      expect(metadata.openGraph?.type).toBe('website');
+      expect((metadata.openGraph as any)?.type).toBe('website');
       expect(metadata.openGraph?.locale).toBe('pt_BR');
       expect(metadata.openGraph?.images).toBeDefined();
     });
@@ -77,7 +76,7 @@ describe('SEO & Metadata Utils', () => {
       expect(metadata.alternates?.canonical).toBe(
         'https://portfolio.magui.studio/projetos/nacho-libre'
       );
-      expect(metadata.openGraph?.images?.[0]).toEqual({
+      expect((metadata.openGraph?.images as any)?.[0]).toEqual({
         url: mockEntry.cardImage,
         alt: 'Nacho Libre | Projeto do Portfólio MAGUI.studio',
       });

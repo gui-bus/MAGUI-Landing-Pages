@@ -4,7 +4,6 @@ import { render, screen } from '@testing-library/react';
 import { ProjectWhatsappButton } from './project-whatsapp-button';
 import { buildWhatsappHref, WhatsappButton } from './whatsapp-button';
 
-// Mock do next/link para renderizar uma tag <a> comum
 vi.mock('next/link', () => ({
   default: ({ children, href, ...props }: any) => (
     <a href={href} {...props}>
@@ -13,9 +12,8 @@ vi.mock('next/link', () => ({
   ),
 }));
 
-// Mock parcial do ícone para evitar quebrar importações de outros ícones na árvore de imports (ex: SolarPanel no kroma/data)
 vi.mock('@phosphor-icons/react/ssr', async (importOriginal) => {
-  const actual = await importOriginal();
+  const actual = (await importOriginal()) as any;
   return {
     ...actual,
     WhatsappLogoIcon: () => <span data-testid="whatsapp-icon" />,
