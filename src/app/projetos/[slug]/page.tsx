@@ -17,12 +17,16 @@ import {
   sanitizeText,
 } from "@/lib/seo";
 
+interface PageProps {
+  params: Promise<{ slug: string }>;
+}
+
 export function generateStaticParams() {
   return sections.map((section) => ({ slug: section.slug }));
 }
 
 export async function generateMetadata(
-  props: PageProps<"/projetos/[slug]">,
+  props: PageProps,
 ): Promise<Metadata> {
   const { slug } = await props.params;
   const entry = sectionMap[slug];
@@ -37,7 +41,7 @@ export async function generateMetadata(
   return buildProjectMetadata(entry, baseUrl);
 }
 
-export default async function ProjectPage(props: PageProps<"/projetos/[slug]">) {
+export default async function ProjectPage(props: PageProps) {
   const { slug } = await props.params;
   const entry = sectionMap[slug];
   const baseUrl = await getRequestSiteUrl();
