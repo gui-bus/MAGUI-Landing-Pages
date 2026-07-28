@@ -8,7 +8,7 @@ import { AnimatedSection, ease, itemReveal, motion, staggerReveal } from "./moti
 export function LaCremeProductsSection() {
   return (
     <>
-{/* PRODUCTS */}
+
         <AnimatedSection className="px-5 pb-24 md:px-8 md:pb-32 lg:px-10">
           <motion.div
             className="mx-auto grid max-w-385 gap-6 lg:grid-cols-[0.38fr_0.62fr]"

@@ -42,7 +42,7 @@ export default function Bracket({ fixtures, teamIsoCodes, onShowDetails }: Brack
   const [activeMobileRound, setActiveMobileRound] = useState<string>("round-of-32");
   const [hoveredTeam, setHoveredTeam] = useState<string | null>(null);
 
-  // Drag-to-scroll bracket hook
+
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -67,11 +67,11 @@ export default function Bracket({ fixtures, teamIsoCodes, onShowDetails }: Brack
     if (!isMouseDown || !scrollRef.current) return;
     e.preventDefault();
     const x = e.pageX - scrollRef.current.offsetLeft;
-    const walk = (x - startX) * 1.5; // Ajuste de velocidade do scroll
+    const walk = (x - startX) * 1.5;
     scrollRef.current.scrollLeft = scrollLeftVal - walk;
   };
 
-  // Custom stage translations
+
   const stageTitles: Record<string, string> = {
     "round-of-32": "Dezesseis-avos (1/16)",
     "round-of-16": "Oitavas de Final (1/8)",
@@ -80,22 +80,22 @@ export default function Bracket({ fixtures, teamIsoCodes, onShowDetails }: Brack
     "final-stages": "Final e 3º Lugar"
   };
 
-  // Check if there are still pending games in the group stage
+
   const hasPendingGroupMatches = fixtures.some(
     (f) => f.stage === "group-stage" && (f.homeScore === null || f.awayScore === null)
   );
 
-  // Filter fixtures for bracket stages
+
   const roundOf32 = fixtures.filter((f) => f.stage === "round-of-32");
   const roundOf16 = fixtures.filter((f) => f.stage === "round-of-16");
   const quarters = fixtures.filter((f) => f.stage === "quarter-finals");
   const semis = fixtures.filter((f) => f.stage === "semi-finals");
-  const finals = fixtures.filter((f) => f.stage === "final" || f.stage === "third-place").sort((a, b) => b.matchNumber - a.matchNumber); // Final first, then 3rd Place
+  const finals = fixtures.filter((f) => f.stage === "final" || f.stage === "third-place").sort((a, b) => b.matchNumber - a.matchNumber);
 
-  // Symmetrical bracket lists based on matchNumbers (J73 to J104)
+
   const roundOf32LeftNumbers = [76, 78, 79, 80, 86, 88, 85, 87];
   const roundOf32RightNumbers = [74, 77, 73, 75, 83, 84, 81, 82];
-  
+
   const roundOf16LeftNumbers = [91, 92, 95, 96];
   const roundOf16RightNumbers = [89, 90, 93, 94];
 
@@ -105,7 +105,7 @@ export default function Bracket({ fixtures, teamIsoCodes, onShowDetails }: Brack
   const semisLeftNumbers = [102];
   const semisRightNumbers = [101];
 
-  // Helper to map and sort fixtures by a specific number sequence
+
   const mapFixturesByNumbers = (nums: number[]) => {
     return nums
       .map((num) => fixtures.find((f) => f.matchNumber === num))
@@ -133,7 +133,7 @@ export default function Bracket({ fixtures, teamIsoCodes, onShowDetails }: Brack
         </div>
       );
     }
-    
+
     let flagUrl = "";
     if (resolvedName === "Inglaterra") {
       flagUrl = "https://flagcdn.com/gb-eng.svg";
@@ -226,17 +226,17 @@ export default function Bracket({ fixtures, teamIsoCodes, onShowDetails }: Brack
         key={match.matchNumber}
         onClick={() => onShowDetails(match.matchNumber)}
         className={`group relative text-left rounded-xl border select-none transition-all duration-300 focus:outline-none cursor-pointer ${
-          isFeatured 
-            ? "border-orange-500 bg-zinc-950/90 shadow-2xl scale-[1.03] hover:scale-[1.05] p-5" 
-            : isMatchHighlighted 
-              ? "border-orange-500 bg-orange-500/5 shadow-[0_0_15px_rgba(249,115,22,0.15)] scale-[1.02] z-10 p-3" 
+          isFeatured
+            ? "border-orange-500 bg-zinc-950/90 shadow-2xl scale-[1.03] hover:scale-[1.05] p-5"
+            : isMatchHighlighted
+              ? "border-orange-500 bg-orange-500/5 shadow-[0_0_15px_rgba(249,115,22,0.15)] scale-[1.02] z-10 p-3"
               : "border-zinc-900 bg-zinc-950/60 hover:border-orange-500/60 hover:bg-zinc-900/30 p-3"
         } ${
           isCompact ? "w-full" : isFeatured ? "w-72" : "w-60"
         }`}
       >
         {renderConnectors()}
-        {/* Match Header */}
+
         <div className={`flex items-center justify-between font-black uppercase tracking-wider text-zinc-500 ${isFeatured ? "text-[10px] mb-3" : "text-[8px] mb-2"}`}>
           <span>Jogo {match.matchNumber}</span>
           <span className="truncate max-w-[130px]">
@@ -257,14 +257,14 @@ export default function Bracket({ fixtures, teamIsoCodes, onShowDetails }: Brack
           </span>
         </div>
 
-        {/* Teams List */}
+
         {(() => {
           const isHomeWinner = hasScore && (
-            match.homeScore! > match.awayScore! || 
+            match.homeScore! > match.awayScore! ||
             (match.homeScore! === match.awayScore! && (match.winner === homeResolved || match.vencedor === homeResolved))
           );
           const isAwayWinner = hasScore && (
-            match.awayScore! > match.homeScore! || 
+            match.awayScore! > match.homeScore! ||
             (match.homeScore! === match.awayScore! && (match.winner === awayResolved || match.vencedor === awayResolved))
           );
           const isHomeLoser = hasScore && !isHomeWinner && (match.homeScore! < match.awayScore! || isAwayWinner);
@@ -272,8 +272,8 @@ export default function Bracket({ fixtures, teamIsoCodes, onShowDetails }: Brack
 
           return (
             <div className={`flex flex-col ${isFeatured ? "gap-2.5" : "gap-1.5"}`}>
-              {/* Home */}
-              <div 
+
+              <div
                 className={`flex items-center justify-between gap-2 py-0.5 transition duration-200 ${
                   isHomeHovered ? "text-orange-400" : ""
                 }`}
@@ -285,10 +285,10 @@ export default function Bracket({ fixtures, teamIsoCodes, onShowDetails }: Brack
                   <span className={`font-bold truncate transition duration-200 ${
                     isFeatured ? "text-[13px]" : "text-[11px]"
                   } ${
-                    isHomeHovered 
-                      ? "text-orange-500 font-extrabold" 
-                      : isHomeLoser 
-                        ? "text-zinc-500" 
+                    isHomeHovered
+                      ? "text-orange-500 font-extrabold"
+                      : isHomeLoser
+                        ? "text-zinc-500"
                         : "text-white"
                   }`}>
                     {homeResolved || match.homeTeam}
@@ -300,8 +300,8 @@ export default function Bracket({ fixtures, teamIsoCodes, onShowDetails }: Brack
                   } ${
                     isHomeHovered
                       ? "text-orange-500"
-                      : isHomeLoser 
-                        ? "text-zinc-500" 
+                      : isHomeLoser
+                        ? "text-zinc-500"
                         : "text-orange-500"
                   }`}>
                     {match.homeScore}
@@ -312,8 +312,8 @@ export default function Bracket({ fixtures, teamIsoCodes, onShowDetails }: Brack
                 )}
               </div>
 
-              {/* Away */}
-              <div 
+
+              <div
                 className={`flex items-center justify-between gap-2 py-0.5 transition duration-200 ${
                   isAwayHovered ? "text-orange-400" : ""
                 }`}
@@ -325,10 +325,10 @@ export default function Bracket({ fixtures, teamIsoCodes, onShowDetails }: Brack
                   <span className={`font-bold truncate transition duration-200 ${
                     isFeatured ? "text-[13px]" : "text-[11px]"
                   } ${
-                    isAwayHovered 
-                      ? "text-orange-500 font-extrabold" 
-                      : isAwayLoser 
-                        ? "text-zinc-500" 
+                    isAwayHovered
+                      ? "text-orange-500 font-extrabold"
+                      : isAwayLoser
+                        ? "text-zinc-500"
                         : "text-white"
                   }`}>
                     {awayResolved || match.awayTeam}
@@ -340,8 +340,8 @@ export default function Bracket({ fixtures, teamIsoCodes, onShowDetails }: Brack
                   } ${
                     isAwayHovered
                       ? "text-orange-500"
-                      : isAwayLoser 
-                        ? "text-zinc-500" 
+                      : isAwayLoser
+                        ? "text-zinc-500"
                         : "text-orange-500"
                   }`}>
                     {match.awayScore}
@@ -378,8 +378,8 @@ export default function Bracket({ fixtures, teamIsoCodes, onShowDetails }: Brack
   return (
     <div className="w-full">
 
-      {/* Symmetrical tree view for both mobile and desktop (scrollable horizontally) */}
-      <div 
+
+      <div
         ref={scrollRef}
         onMouseDown={handleMouseDown}
         onMouseLeave={handleMouseLeave}
@@ -390,7 +390,7 @@ export default function Bracket({ fixtures, teamIsoCodes, onShowDetails }: Brack
         }`}
       >
         <div className="min-w-[2300px] flex items-stretch justify-between gap-8 py-2 px-8 h-[1000px]">
-          {/* LADO ESQUERDO: Segundas de final */}
+
           <div className="flex flex-col justify-between py-4 h-full">
             <h4 className="text-[10px] font-black uppercase tracking-widest text-zinc-500 text-center mb-4 shrink-0">Segundas de final</h4>
             <div className="flex-grow flex flex-col justify-between gap-2">
@@ -398,7 +398,7 @@ export default function Bracket({ fixtures, teamIsoCodes, onShowDetails }: Brack
             </div>
           </div>
 
-          {/* LADO ESQUERDO: Oitavas de final */}
+
           <div className="flex flex-col justify-around py-4 h-full">
             <h4 className="text-[10px] font-black uppercase tracking-widest text-zinc-500 text-center mb-4 shrink-0">Oitavas de final</h4>
             <div className="flex-grow flex flex-col justify-around">
@@ -406,7 +406,7 @@ export default function Bracket({ fixtures, teamIsoCodes, onShowDetails }: Brack
             </div>
           </div>
 
-          {/* LADO ESQUERDO: Quartas de final */}
+
           <div className="flex flex-col justify-around py-4 h-full">
             <h4 className="text-[10px] font-black uppercase tracking-widest text-zinc-500 text-center mb-4 shrink-0">Quartas de final</h4>
             <div className="flex-grow flex flex-col justify-around">
@@ -414,7 +414,7 @@ export default function Bracket({ fixtures, teamIsoCodes, onShowDetails }: Brack
             </div>
           </div>
 
-          {/* LADO ESQUERDO: Semifinal */}
+
           <div className="flex flex-col justify-around py-4 h-full">
             <h4 className="text-[10px] font-black uppercase tracking-widest text-zinc-500 text-center mb-4 shrink-0">Semifinal</h4>
             <div className="flex-grow flex flex-col justify-around">
@@ -422,12 +422,12 @@ export default function Bracket({ fixtures, teamIsoCodes, onShowDetails }: Brack
             </div>
           </div>
 
-          {/* CENTRO: Finais (Final + 3º Lugar) */}
+
           <div className="flex flex-col justify-center gap-16 py-4 h-full w-72">
             <h4 className="text-[10px] font-black uppercase tracking-widest text-zinc-500 text-center mb-4 shrink-0">Finais</h4>
-            
+
             <div className="flex flex-col justify-center gap-24 flex-grow">
-              {/* Grande Final */}
+
               {finalMatch && (
                 <div className="flex flex-col gap-2">
                   <span className="text-[9px] font-black text-center uppercase tracking-widest text-orange-500 animate-pulse flex items-center justify-center gap-1">
@@ -437,7 +437,7 @@ export default function Bracket({ fixtures, teamIsoCodes, onShowDetails }: Brack
                 </div>
               )}
 
-              {/* Decisão do 3º Lugar */}
+
               {thirdPlaceMatch && (
                 <div className="flex flex-col gap-2">
                   <span className="text-[9px] font-black text-center uppercase tracking-widest text-zinc-400 flex items-center justify-center gap-1">
@@ -449,7 +449,7 @@ export default function Bracket({ fixtures, teamIsoCodes, onShowDetails }: Brack
             </div>
           </div>
 
-          {/* LADO DIREITO: Semifinal */}
+
           <div className="flex flex-col justify-around py-4 h-full">
             <h4 className="text-[10px] font-black uppercase tracking-widest text-zinc-500 text-center mb-4 shrink-0">Semifinal</h4>
             <div className="flex-grow flex flex-col justify-around">
@@ -457,7 +457,7 @@ export default function Bracket({ fixtures, teamIsoCodes, onShowDetails }: Brack
             </div>
           </div>
 
-          {/* LADO DIREITO: Quartas de final */}
+
           <div className="flex flex-col justify-around py-4 h-full">
             <h4 className="text-[10px] font-black uppercase tracking-widest text-zinc-500 text-center mb-4 shrink-0">Quartas de final</h4>
             <div className="flex-grow flex flex-col justify-around">
@@ -465,7 +465,7 @@ export default function Bracket({ fixtures, teamIsoCodes, onShowDetails }: Brack
             </div>
           </div>
 
-          {/* LADO DIREITO: Oitavas de final */}
+
           <div className="flex flex-col justify-around py-4 h-full">
             <h4 className="text-[10px] font-black uppercase tracking-widest text-zinc-500 text-center mb-4 shrink-0">Oitavas de final</h4>
             <div className="flex-grow flex flex-col justify-around">
@@ -473,18 +473,18 @@ export default function Bracket({ fixtures, teamIsoCodes, onShowDetails }: Brack
             </div>
           </div>
 
-          {/* LADO DIREITO: Segundas de final */}
+
           <div className="flex flex-col justify-between py-4 h-full">
             <h4 className="text-[10px] font-black uppercase tracking-widest text-zinc-500 text-center mb-4 shrink-0">Segundas de final</h4>
             <div className="flex-grow flex flex-col justify-between gap-2">
               {r32Right.map((match) => renderMatchNode(match))}
             </div>
           </div>
-          {/* Spacer to prevent right gluing during scroll */}
+
           <div className="w-12 shrink-0" />
         </div>
 
-        {/* Custom scrollbar styling */}
+
         <style dangerouslySetInnerHTML={{__html: `
           .caze-bracket-scroll::-webkit-scrollbar {
             height: 6px;

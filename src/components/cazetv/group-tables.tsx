@@ -86,7 +86,7 @@ export default function GroupTables({ teamIsoCodes, onTeamClick }: GroupTablesPr
 
   return (
     <div className="flex flex-col gap-8">
-      {/* Legend Banner */}
+
       <div className="rounded-2xl border border-zinc-900 bg-zinc-950/40 p-4 select-none">
         <h4 className="text-[10px] font-black uppercase tracking-widest text-zinc-500 mb-3">Legenda</h4>
         <div className="flex flex-wrap gap-x-6 gap-y-3 text-xs text-zinc-400">
@@ -118,21 +118,21 @@ export default function GroupTables({ teamIsoCodes, onTeamClick }: GroupTablesPr
         </div>
       </div>
 
-      {/* Grid of Group Tables */}
+
       <div className="grid gap-8 grid-cols-1 xl:grid-cols-2">
         {groupsStandings.map((group, gIdx) => (
           <div
             key={gIdx}
             className="rounded-2xl border border-zinc-900/60 bg-zinc-950/20 p-5 backdrop-blur-md"
           >
-            {/* Group Header */}
+
             <div className="flex items-center justify-between border-b border-zinc-900/80 pb-4 mb-4">
               <h3 className="text-base font-black uppercase tracking-wider text-white">
                 {group.groupName}
               </h3>
             </div>
 
-          {/* Standings Table */}
+
           <div className="overflow-x-auto select-none">
             <table className="w-full text-left text-xs text-zinc-400">
               <thead>
@@ -160,7 +160,7 @@ export default function GroupTables({ teamIsoCodes, onTeamClick }: GroupTablesPr
                         team.qualifies ? "bg-emerald-950/[0.02]" : ""
                       }`}
                     >
-                      {/* Rank Column */}
+
                       <td className="py-3 px-1 text-center font-bold">
                         <div className="flex items-center justify-center gap-1.5">
                           {team.qualifies && (
@@ -175,7 +175,7 @@ export default function GroupTables({ teamIsoCodes, onTeamClick }: GroupTablesPr
                         </div>
                       </td>
 
-                      {/* Team Flag + Name */}
+
                       <td className="py-3 px-2 font-bold text-white">
                         <button
                           onClick={() => onTeamClick?.(team.team)}
@@ -188,12 +188,12 @@ export default function GroupTables({ teamIsoCodes, onTeamClick }: GroupTablesPr
                         </button>
                       </td>
 
-                      {/* Points */}
+
                       <td className="py-3 px-2 text-center font-black text-orange-500 text-sm">
                         {team.points}
                       </td>
 
-                      {/* Rest of the Stats */}
+
                       <td className="py-3 px-2 text-center text-zinc-300 font-semibold">{team.played}</td>
                       <td className="py-3 px-2 text-center">{team.won}</td>
                       <td className="py-3 px-2 text-center">{team.drawn}</td>
@@ -212,7 +212,7 @@ export default function GroupTables({ teamIsoCodes, onTeamClick }: GroupTablesPr
                         {team.goalDifference > 0 ? `+${team.goalDifference}` : team.goalDifference}
                       </td>
 
-                      {/* Last Five Form */}
+
                       <td className="py-3 px-2 text-center pl-4">
                         {renderLastFive(team.lastFive)}
                       </td>

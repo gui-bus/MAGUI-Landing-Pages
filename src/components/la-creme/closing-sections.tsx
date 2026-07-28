@@ -8,7 +8,7 @@ import { AnimatedSection, imageReveal, itemReveal, motion, staggerReveal } from 
 export function LaCremeClosingSections() {
   return (
     <>
-{/* OCASIÕES */}
+
         <>
           <AnimatedSection className="bg-[#F3F3F3] px-5 pt-24 md:px-8 md:pt-32 pb-12 lg:px-10 overflow-hidden">
             <motion.div className="mx-auto max-w-385" variants={staggerReveal}>

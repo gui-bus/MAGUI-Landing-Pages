@@ -7,7 +7,7 @@ import { AnimatedSection, itemReveal, motion, staggerReveal } from "./motion";
 export function LaCremeProcessVideoSection() {
   return (
     <>
-{/* VIDEO */}
+
         <AnimatedSection className="relative w-full bg-[#2b1714] text-white overflow-hidden min-h-170 md:min-h-150 p-6 sm:p-10 md:p-16 lg:p-20 flex items-start pb-24 sm:pb-10">
           <div className="absolute inset-0 z-0">
             <video

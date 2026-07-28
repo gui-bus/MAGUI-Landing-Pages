@@ -17,7 +17,7 @@ export function ShinobiHeroBannerSection() {
           clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
           transition: clip-path 1.4s cubic-bezier(0.19, 1, 0.22, 1);
         }
-        
+
         /* Estado Hover: O corte atravessa a tela na diagonal e abre instantaneamente */
         .group:hover .hero-bg-samurai {
           clip-path: polygon(0 0, 120% 0, 100% 100%, -20% 100%);

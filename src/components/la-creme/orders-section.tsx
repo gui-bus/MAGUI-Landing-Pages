@@ -6,7 +6,7 @@ import { AnimatedSection, ease, itemReveal, motion, staggerReveal } from "./moti
 export function LaCremeOrdersSection() {
   return (
     <>
-{/* ENCOMENDAS */}
+
         <AnimatedSection
           id="encomendas"
           className="px-5 py-24 md:px-8 md:py-32 lg:px-10 bg-[#F3F3F3]"
@@ -31,7 +31,7 @@ export function LaCremeOrdersSection() {
               </p>
             </motion.div>
 
-            {/* Lista de Etapas (Layout Tabela Minimalista) */}
+
             <div className="mt-8 grid gap-0">
               {steps.map(([number, title, text], index) => (
                 <motion.article

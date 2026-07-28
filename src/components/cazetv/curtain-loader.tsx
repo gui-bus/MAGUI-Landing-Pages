@@ -7,10 +7,10 @@ export default function CurtainLoader() {
   const [stage, setStage] = useState<"visible" | "animating" | "hidden">("visible");
 
   useEffect(() => {
-    // Prevent scrolling while loading
+
     document.body.style.overflow = "hidden";
 
-    // Start curtain slide up after the logo assembly animation completes
+
     const animTimeout = setTimeout(() => {
       setStage("animating");
     }, 2000);
@@ -97,7 +97,7 @@ export default function CurtainLoader() {
         }`}
       >
         <div className="flex items-center justify-center">
-          {/* Icon - Larger size */}
+
           <div className="relative w-28 h-28 md:w-32 md:h-32 opacity-0 animate-caze-icon z-10">
             <Image
               src="/images/cazetv/icone-caze-tv.webp"
@@ -109,7 +109,7 @@ export default function CurtainLoader() {
             />
           </div>
 
-          {/* Text wrapper - Sitting closer and tighter to the icon */}
+
           <div className="animate-caze-text opacity-0 w-0 h-20 md:h-24 relative">
             <div className="relative w-[130px] h-full">
               <Image

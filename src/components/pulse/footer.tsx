@@ -62,7 +62,7 @@ export function PulseFooter() {
               </p>
             </div>
 
-            {/* Form Integrado e Premium (Sem min-h fixo) */}
+
             <form className="mt-10 flex w-full flex-col gap-3 sm:flex-row">
               <div className="relative flex-1">
                 <label className="sr-only" htmlFor="pulse-newsletter">

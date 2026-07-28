@@ -7,9 +7,9 @@ export default function Footer() {
   return (
     <footer className="mt-auto border-t border-zinc-900 bg-neutral-950 pt-12 pb-24 text-zinc-500">
       <div className="w-full px-4 sm:px-6 lg:px-8">
-        {/* Main Footer Row */}
+
         <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between pb-8 border-b border-zinc-900/60">
-          {/* Logo & Description */}
+
           <div className="flex flex-col gap-3 max-w-sm">
             <div className="relative h-20 w-44 transition-opacity duration-300">
               <Image
@@ -25,7 +25,7 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Copyright & Project Attributions */}
+
           <div className="flex flex-col gap-2 md:items-end text-xs">
             <p className="font-semibold text-zinc-400">
               © {new Date().getFullYear()} CazéTV • Projeto de Portfólio
@@ -50,7 +50,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Sources & Credits Section */}
+
         <div className="flex flex-col gap-2.5 mt-8 pb-6 border-b border-zinc-900/60 text-xs">
           <span className="font-black text-zinc-400 uppercase tracking-wider text-[9px]">Fontes de Informações e Dados Referenciados:</span>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-zinc-500">
@@ -83,7 +83,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Legal Disclaimer Box */}
+
         <div className="mt-8 rounded-2xl bg-zinc-900/10 border border-zinc-900/50 p-6 text-[10px] text-zinc-500 leading-relaxed">
           <p className="font-extrabold uppercase text-zinc-300 mb-2 tracking-wider flex items-center gap-1.5 select-none">
             <Warning size={12} className="text-orange-500 shrink-0" />

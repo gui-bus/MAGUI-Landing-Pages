@@ -19,7 +19,7 @@ export function KromaHeroSection() {
       sizes="100vw"
       className="kroma-kenburns object-cover"
     />
-    {/* Máscara de alto contraste escura e homogênea para priorizar a leitura */}
+
     <div className="absolute inset-0 bg-[#2A2A2A]/40 mix-blend-multiply" />
   </div>
 
@@ -29,7 +29,7 @@ export function KromaHeroSection() {
         className="kroma-reveal flex flex-col items-start"
       >
         <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#FFBC4F]">
-          [ KROMA // Inteligência Energética ]
+          [ KROMA
         </div>
 
         <h1 className={`mt-6 text-5xl font-semibold leading-[0.95] tracking-[-0.04em] sm:text-7xl md:text-8xl xl:text-[100px] text-white uppercase ${alexandria.className}`}>
@@ -126,7 +126,7 @@ export function KromaHeroSection() {
     </div>
   </div>
 
-  {/* ================= DATA BAR (RODAPÉ TÉCNICO DE LINHA ÚNICA) ================= */}
+
   <div
     className="kroma-reveal kroma-delay-3 relative z-10 w-full border-t border-white/10 bg-[#2A2A2A]/40 backdrop-blur-md mt-24"
   >

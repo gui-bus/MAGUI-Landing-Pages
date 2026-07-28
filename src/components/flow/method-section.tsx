@@ -7,7 +7,7 @@ export function FlowMethodSection() {
   return (
     <section id="metodo" className="py-20 px-5 md:px-8 lg:px-10">
       <div className="flex flex-col lg:flex-row-reverse lg:gap-20">
-        
+
         <div className="mt-20 flex flex-col lg:mt-0 lg:w-1/2">
           {flowMethod.map(([number, title, text]) => (
             <div key={title} className="flex gap-8 border-b border-[#061421]/10 py-10 last:border-0">
@@ -31,10 +31,10 @@ export function FlowMethodSection() {
               traduz técnica em decisão clara para montar, manter e evoluir aquários
               marinhos com segurança.
             </p>
-            <Link 
-              href="https://wa.me/5500000000000?text=Oi%2C%20FLOW.%20Quero%20orientacao%20para%20montar%20ou%20evoluir%20meu%20aquario%20marinho." 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <Link
+              href="https://wa.me/5500000000000?text=Oi%2C%20FLOW.%20Quero%20orientacao%20para%20montar%20ou%20evoluir%20meu%20aquario%20marinho."
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-10 inline-flex items-center gap-3 border border-[#061421] px-8 py-4 text-xs font-bold uppercase tracking-widest text-[#061421] transition hover:bg-[#061421] hover:text-white"
             >
               Falar com a FLOW
@@ -42,13 +42,13 @@ export function FlowMethodSection() {
             </Link>
           </div>
 
-          {/* Imagem posicionada abaixo do texto */}
+
           <div className="relative aspect-[4/3] w-full bg-slate-100">
-            <Image 
-              src={flowImages.familyGuidance} 
-              alt="Família recebendo instruções técnicas" 
-              fill 
-              className="object-cover" 
+            <Image
+              src={flowImages.familyGuidance}
+              alt="Família recebendo instruções técnicas"
+              fill
+              className="object-cover"
             />
           </div>
         </div>

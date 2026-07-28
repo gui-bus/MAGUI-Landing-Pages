@@ -18,10 +18,10 @@ export function SayegHeroSection() {
       </SayegBackdropWord>
 
       <div className="w-full relative z-10">
-        
+
 
         <div className="grid gap-8 lg:grid-cols-12 lg:gap-12 w-full">
-          
+
           <SayegReveal className="lg:col-span-8">
             <span className="inline-flex items-center gap-2 mb-4 text-xs uppercase tracking-[0.2em] font-semibold text-[#806e68]">
               Visagismo · Brows · Lips
@@ -31,7 +31,7 @@ export function SayegHeroSection() {
               <span className="font-serif italic text-[#8a7268] pl-4 md:pl-10">seus traços.</span>
             </h1>
           </SayegReveal>
-          
+
           <SayegReveal delay={0.1} className="flex flex-col justify-end lg:col-span-4 lg:pb-2">
             <p className="mb-6 text-base leading-relaxed text-[#665853] md:text-lg">
               Sobrancelhas, lábios e visagismo para revelar harmonia com precisão, leveza e intenção.
@@ -45,10 +45,10 @@ export function SayegHeroSection() {
           </SayegReveal>
         </div>
 
-        {/* Bloco Inferior: Grid de Imagens com alturas fixas controladas */}
+
         <div className="mt-12 grid gap-8 md:grid-cols-12 md:items-start lg:mt-16 w-full">
-          
-          {/* Imagem Maior (Hero) */}
+
+
           <SayegImageReveal className="relative w-full md:col-span-7 lg:col-span-8">
             <div className="relative w-full bg-[#fffaf5] border border-[#f0e6e1]/60 overflow-hidden h-85 sm:h-110 md:h-125 lg:h-140">
               <Image
@@ -67,9 +67,9 @@ export function SayegHeroSection() {
             </div>
           </SayegImageReveal>
 
-          {/* Coluna da Direita (Imagem Menor + Nome) */}
+
           <SayegImageReveal delay={0.12} className="relative w-full md:col-span-5 md:mt-12 lg:col-span-4 lg:mt-20">
-            
+
             <div className="relative w-full overflow-hidden shadow-[0_20px_50px_rgba(70,42,38,0.04)] bg-[#fffaf5] h-70 sm:h-95 md:h-100 lg:h-112.5">
               <Image
                 src={sayegImages.profile}

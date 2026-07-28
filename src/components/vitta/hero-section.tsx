@@ -11,7 +11,7 @@ export function VittaHeroSection() {
       id="inicio"
       className="relative flex flex-col justify-center overflow-hidden bg-[#161616] px-6 py-28 text-white md:px-12 md:py-36 lg:py-40 selection:bg-[#D7A98B]/30"
     >
-      {/* Background Imersivo (Foto do Hero cobrindo 100% da seção) */}
+
       <div className="absolute inset-0 z-0">
         <Image
           src={images.hero}
@@ -29,27 +29,27 @@ export function VittaHeroSection() {
           className="vitta-hero-secondary object-cover saturate-[0.85]"
           sizes="100vw"
         />
-        {/* Gradients de Contraste e Proteção de Leitura */}
+
         <div className="absolute inset-0 bg-linear-to-r from-[#161616]/40 to-transparent" />
         <div className="absolute inset-0 bg-linear-to-t from-[#161616] via-transparent to-[#161616]/60" />
       </div>
 
-      {/* Container de Conteúdo Assimétrico */}
+
       <div className="relative z-10 mx-auto w-full max-w-400">
-        {/* COLUNA ESQUERDA: Tipografia Monumental e CTAs */}
+
         <div className="flex flex-col justify-center pr-0 lg:pr-12">
           <div className="vitta-reveal w-full">
-            {/* Subtitle / Tag */}
+
             <p className="inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.4em] text-[#D7A98B]">
               <AsclepiusIcon
                 size={24}
                 weight="duotone"
                 className="animate-pulse text-[#D7A98B]"
               />
-              clínica estética para pele saudável // VITTA
+              clínica estética para pele saudável
             </p>
 
-            {/* Heading */}
+
             <h1
               className={`${syncopate.className} mt-8 uppercase text-4xl font-light leading-[1.1] tracking-tight text-white sm:text-6xl md:text-7xl xl:text-[80px] drop-shadow-sm`}
             >
@@ -58,14 +58,14 @@ export function VittaHeroSection() {
               cada escolha estética
             </h1>
 
-            {/* Description */}
+
             <p className="mt-8 max-w-2xl text-base leading-relaxed text-white/90 md:text-lg md:leading-relaxed font-light">
               Consultas, protocolos e produtos pensados para melhorar textura,
               manchas, sensibilidade, viço e firmeza sem ignorar a rotina real
               de cada pele.
             </p>
 
-            {/* CTA Buttons */}
+
             <div className="mt-12 flex flex-col gap-4 sm:flex-row">
               <Link
                 href={links.whatsapp}

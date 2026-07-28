@@ -26,7 +26,7 @@ export function BitesExperienceSection() {
       id="sabor"
       className="w-full bg-[#F5F5F5] text-[#030401] antialiased selection:bg-[#FB5F00] selection:text-white"
     >
-      {/* EXPERIENCE POINTS */}
+
       <div className="grid w-full md:grid-cols-3">
         {experiencePoints.map((point) => (
           <article
@@ -50,7 +50,7 @@ export function BitesExperienceSection() {
         ))}
       </div>
 
-      {/* HERO */}
+
       <div className="relative overflow-hidden">
         <div className="relative min-h-[760px]">
           <Image
@@ -62,11 +62,11 @@ export function BitesExperienceSection() {
             className="object-cover object-center"
           />
 
-          {/* Overlay */}
+
           <div className="absolute inset-0 bg-linear-to-r from-[#030401]/82 via-[#030401]/42 to-transparent" />
           <div className="absolute inset-0 bg-linear-to-t from-[#030401]/72 via-transparent to-transparent" />
 
-          {/* Conteúdo */}
+
           <div className="relative z-10 flex min-h-[760px] flex-col justify-end px-5 py-10 md:px-10 lg:px-14">
             <div className="max-w-5xl">
               <div className="inline-flex items-center gap-2">

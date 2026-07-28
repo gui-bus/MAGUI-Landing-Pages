@@ -25,7 +25,7 @@ export function BitesProductSection() {
       id="linha"
       className="bg-[#F5F5F5] text-[#030401] py-16 antialiased md:py-24 border-t border-[#030401]/10 selection:bg-[#FB5F00] selection:text-white w-full"
     >
-      {/* 1. HERO HEADER: Ocupa 100% da largura com bordas estruturais */}
+
       <div className="w-full border-b border-[#030401] px-4 pb-12 md:px-12 md:pb-16">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="space-y-4">
@@ -53,9 +53,9 @@ export function BitesProductSection() {
         </div>
       </div>
 
-      {/* 2. GRID PRINCIPAL ASSETRICO: Sem max-w, esticando de ponta a ponta */}
+
       <div className="grid w-full border-b border-[#030401] xl:grid-cols-12">
-        {/* ESQUERDA — CARDÁPIO */}
+
         <div className="relative xl:col-span-5 border-b xl:border-b-0 xl:border-r border-[#030401] bg-[#F5F5F5]">
           <div className="relative h-full min-h-160 lg:min-h-260">
             <Image
@@ -88,7 +88,7 @@ export function BitesProductSection() {
           </div>
         </div>
 
-        {/* DIREITA — 2 IMAGENS GRANDES */}
+
         <div className="xl:col-span-7 grid divide-y divide-[#030401]">
           {featuredProducts.slice(0, 2).map((product, index) => (
             <article
@@ -106,7 +106,7 @@ export function BitesProductSection() {
               <div className="absolute inset-0 bg-linear-to-r from-[#0A0A0A]/80 via-transparent to-transparent" />
               <div className="absolute inset-0 bg-linear-to-t from-[#0A0A0A]/80 via-transparent to-transparent" />
 
-              {/* Texto encima */}
+
               <div className="absolute inset-x-0 bottom-0 z-10 p-6 md:p-10 text-white">
                 <div className="mb-3 flex items-center justify-between gap-4">
                   <span className="text-xs font-bold text-[#FB5F00]">

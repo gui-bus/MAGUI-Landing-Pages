@@ -9,7 +9,7 @@ import { AnimatedSection, ease, itemReveal, motion, staggerReveal } from "./moti
 export function LaCremeShowcaseSection() {
   return (
     <>
-{/* VITRINE */}
+
         <AnimatedSection
           id="vitrine"
           className="px-5 py-24 md:px-8 md:py-32 lg:px-10"

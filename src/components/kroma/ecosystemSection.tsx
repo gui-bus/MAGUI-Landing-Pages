@@ -40,7 +40,7 @@ export default function EcoSystemSection() {
       className="relative overflow-hidden bg-[#1E1E1E] px-5 pt-10 pb-24 text-white md:px-8 md:pt-12 md:pb-32 lg:px-10"
     >
       <div className="relative mx-auto max-w-[1560px]">
-        {/* ================= CABEÇALHO DA SEÇÃO ================= */}
+
         <div className="kroma-reveal border-y border-white/10 py-14">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -75,9 +75,9 @@ export default function EcoSystemSection() {
           </motion.div>
         </div>
 
-        {/* ================= GRID DO ECOSSISTEMA ================= */}
+
         <div className="kroma-reveal kroma-delay-2 mt-12 grid grid-cols-1 overflow-hidden bg-[#2A2A2A]/86 lg:grid-cols-[0.58fr_0.42fr]">
-          {/* PAINEL VISUAL (ESQUERDA) */}
+
           <div className="kroma-scanline group relative min-h-[450px] overflow-hidden bg-black">
             <AnimatePresence mode="wait">
               <motion.div
@@ -99,12 +99,12 @@ export default function EcoSystemSection() {
               </motion.div>
             </AnimatePresence>
 
-            {/* Badge Técnico de Index flutuando na imagem */}
+
             <div className="absolute left-6 top-6 border border-white/10 bg-black/40 px-4 py-2 font-mono text-[10px] tracking-[0.2em] text-[#FFBC4F] backdrop-blur-md">
-              SYSTEM // 0{activeIndex + 1}
+              SYSTEM
             </div>
 
-            {/* Controles Geométricos de Navegação (Menu Inferior Esquerdo) */}
+
             <div className="absolute bottom-6 left-6 z-10 flex items-center gap-1.5">
               <button
                 type="button"
@@ -125,7 +125,7 @@ export default function EcoSystemSection() {
             </div>
           </div>
 
-          {/* PAINEL DE CONTROLE / MENU SELECIONÁVEL (DIREITA) */}
+
           <aside className="flex flex-col justify-between divide-y divide-white/10 bg-[#242424] text-white">
             <div className="flex w-full flex-col divide-y divide-white/10">
               {products.map((item, index) => {
@@ -172,7 +172,7 @@ export default function EcoSystemSection() {
                       />
                     </button>
 
-                    {/* Sanfona Controlada: Abre o texto e as tags abaixo do botão ativo */}
+
                     <AnimatePresence initial={false}>
                       {isActive && (
                         <motion.div
@@ -188,7 +188,7 @@ export default function EcoSystemSection() {
                               {item.text}
                             </p>
 
-                            {/* Renderização das tags injetadas no próprio fluxo de leitura */}
+
                             <div className="flex flex-wrap gap-1.5 pt-2">
                               {productTags[index].map((tag) => (
                                 <span

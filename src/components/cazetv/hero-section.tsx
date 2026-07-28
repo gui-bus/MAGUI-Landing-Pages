@@ -204,11 +204,11 @@ export default function HeroSection({
 
   return (
     <section className="relative overflow-hidden border-b border-zinc-900 bg-black">
-      {/* Background */}
+
 
       <div className="relative p-6 xl:p-12">
         <div className="grid items-center gap-12 xl:grid-cols-3">
-          {/* LEFT */}
+
           <div className="relative z-10 xl:col-span-2 lg:max-w-5xl flex flex-col items-center justify-center">
             <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-zinc-800 bg-zinc-950 px-4 py-2">
               <div className="h-2 w-2 rounded-full bg-green-500" />
@@ -234,7 +234,7 @@ export default function HeroSection({
 
             {currentMatch && (
               <div className="mt-10 w-full max-w-4xl mx-auto">
-                {/* CAROUSEL SELECTOR */}
+
                 {concurrentMatches.length > 1 && (
                   <div className="mb-6 flex items-center justify-center gap-4 bg-zinc-950/65 border border-zinc-900/80 rounded-2xl py-2 px-4 w-fit mx-auto shadow-md">
                     <button
@@ -256,7 +256,7 @@ export default function HeroSection({
                 )}
 
                 <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] items-center gap-8">
-                  {/* HOME */}
+
 
                   <div className="flex flex-col items-center text-center">
                     {renderFlag(resolvedHome)}
@@ -266,7 +266,7 @@ export default function HeroSection({
                     </span>
                   </div>
 
-                  {/* CENTER */}
+
 
                   <div className="flex flex-col items-center">
                     <div className="rounded-2xl bg-black px-6 py-5 text-center">
@@ -353,7 +353,7 @@ export default function HeroSection({
                     </div>
                   </div>
 
-                  {/* AWAY */}
+
 
                   <div className="flex flex-col items-center text-center">
                     {renderFlag(resolvedAway)}
@@ -367,10 +367,10 @@ export default function HeroSection({
             )}
           </div>
 
-          {/* RIGHT */}
+
           <div className="relative xl:col-span-1">
             <div className="relative h-130 xl:h-162.5">
-              {/* IMAGE */}
+
               <Image
                 src="/images/cazetv/se-tem-copa-esquece-e-na-caze-tv.png"
                 alt="CazéTV"

@@ -47,10 +47,10 @@ export default function FixtureCard({
   const stageLabel = stageTranslations[fixture.stage] || fixture.stage;
   const hasScore = typeof fixture.homeScore === "number" && typeof fixture.awayScore === "number";
 
-  // Check if the match is live now
+
   const now = new Date();
   const kickoff = new Date(fixture.kickoffUtc);
-  const endTime = new Date(kickoff.getTime() + 2 * 60 * 60 * 1000); // 2 hours duration
+  const endTime = new Date(kickoff.getTime() + 2 * 60 * 60 * 1000);
   const isLiveNow = now >= kickoff && now <= endTime;
 
   const renderFlag = (teamName: string) => {
@@ -122,7 +122,7 @@ export default function FixtureCard({
 
   return (
     <div className="group flex flex-col justify-between rounded-2xl bg-zinc-900/20 p-5 hover:bg-zinc-900/30 transition duration-300">
-      {/* Top Meta info */}
+
       <div className="flex items-center justify-between text-[10px] font-black uppercase tracking-wider text-zinc-500 mb-5">
         <span>Jogo {fixture.matchNumber}</span>
         <div className="flex items-center gap-2">
@@ -141,9 +141,9 @@ export default function FixtureCard({
         </div>
       </div>
 
-      {/* Match core layout (Vertical columns) */}
+
       <div className="grid grid-cols-3 items-center gap-2 py-3 select-none">
-        {/* Home Team */}
+
         <button
           onClick={() => onTeamClick?.(fixture.homeTeam)}
           className="flex flex-col items-center text-center gap-2 group/team cursor-pointer outline-none border-0 bg-transparent focus:outline-none"
@@ -154,7 +154,7 @@ export default function FixtureCard({
           </span>
         </button>
 
-        {/* Versus or Scoreboard Divider */}
+
         <div className="flex flex-col items-center justify-center">
           {hasScore ? (
             <div className="flex flex-col items-center">
@@ -194,7 +194,7 @@ export default function FixtureCard({
           )}
         </div>
 
-        {/* Away Team */}
+
         <button
           onClick={() => onTeamClick?.(fixture.awayTeam)}
           className="flex flex-col items-center text-center gap-2 group/team cursor-pointer outline-none border-0 bg-transparent focus:outline-none"
@@ -206,7 +206,7 @@ export default function FixtureCard({
         </button>
       </div>
 
-      {/* View details button */}
+
       <button
         onClick={() => onShowDetails(fixture.matchNumber)}
         className="mt-4 w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-zinc-900/30 text-[10px] font-black uppercase tracking-widest text-zinc-400 hover:text-white hover:bg-zinc-900/60 transition duration-200 outline-none border-0"

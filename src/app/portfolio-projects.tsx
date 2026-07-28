@@ -72,13 +72,13 @@ export function PortfolioProjects({ projects }: PortfolioProjectsProps) {
     });
   }
 
-  // Handle input search
+
   function handleQueryChange(value: string) {
     setQuery(value);
     updateUrl(value, normalizedActiveIndustry);
   }
 
-  // Handle filter buttons
+
   function handleIndustryChange(industry: string) {
     setActiveIndustry(industry);
     updateUrl(query, industry);
@@ -200,7 +200,7 @@ export function PortfolioProjects({ projects }: PortfolioProjectsProps) {
                   {project.description}
                 </p>
               </div>
-              
+
               <div className="flex flex-wrap gap-1 pt-1">
                 {project.tags.slice(0, 3).map((tag) => (
                   <span

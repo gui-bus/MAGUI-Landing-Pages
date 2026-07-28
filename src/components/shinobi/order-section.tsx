@@ -94,8 +94,8 @@ export function ShinobiOrderSection() {
 
       <div className="mx-auto max-w-[1540px]">
         <div className="relative grid gap-8 lg:grid-cols-[0.42fr_0.58fr] lg:items-stretch">
-          
-          {/* Card Esquerdo: Pedido Rápido */}
+
+
           <div className="animate-reveal-up flex flex-col justify-between  bg-neutral-950/40 p-8 md:p-12">
             <div>
               <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-neutral-500 [font-family:var(--font-shinobi-display)]">
@@ -120,8 +120,8 @@ export function ShinobiOrderSection() {
                   {SHINOBI_CAN_PRICE}
                 </p>
               </div>
-              
-              {/* Botão WhatsApp Convertido para Glass */}
+
+
               <Link
                 href={shinobiWhatsappHref}
                 target="_blank"
@@ -175,7 +175,7 @@ export function ShinobiOrderSection() {
                     {SHINOBI_TASTING_KIT_PRICE}
                   </p>
                 </div>
-                {/* Botão Kit Degustação Convertido para Glass */}
+
                 <Link
                   href={shinobiTastingKitHref}
                   target="_blank"
@@ -190,7 +190,7 @@ export function ShinobiOrderSection() {
           </article>
         </div>
 
-        {/* Divisor de Seção */}
+
         <div className="relative mt-20 flex flex-col gap-6 py-8 md:flex-row md:items-center md:justify-between">
           <div>
             <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-neutral-500 [font-family:var(--font-shinobi-display)]">
@@ -206,7 +206,7 @@ export function ShinobiOrderSection() {
           </p>
         </div>
 
-        {/* Listagem de Sabores */}
+
         <div className="relative mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {shinobiFlavors.map((flavor, index) => (
             <article
@@ -223,12 +223,12 @@ export function ShinobiOrderSection() {
                   className="object-cover opacity-75 transition-all duration-700 ease-out group-hover:scale-103 group-hover:opacity-100"
                 />
                 <div className="absolute inset-0 bg-linear-to-b from-black/10 via-transparent to-black/80" />
-                
-                {/* Badge Convertido para Glass */}
+
+
                 <span className="absolute left-6 top-6 border border-white/10 bg-black/40 backdrop-blur-sm px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.2em] text-neutral-300 [font-family:var(--font-shinobi-display)]">
                   {flavor.profile}
                 </span>
-                
+
                 <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4">
                   <div>
                     <p className="text-[9px] font-bold uppercase tracking-[0.25em] [font-family:var(--font-shinobi-display)]">
@@ -238,7 +238,7 @@ export function ShinobiOrderSection() {
                       {flavor.name}
                     </h3>
                   </div>
-                  {/* Badge de preço sutil em Vidro Claro */}
+
                   <p className="shrink-0 border border-white/20 bg-white/[0.06] backdrop-blur-md px-4 py-2 text-2xl font-extrabold text-white [font-family:var(--font-shinobi-display)]">
                     {SHINOBI_CAN_PRICE}
                   </p>
@@ -250,7 +250,7 @@ export function ShinobiOrderSection() {
                   {flavor.description}
                 </p>
                 <div className="grid gap-3 sm:grid-cols-2">
-                  {/* Botão Esquerdo do Card: Convertido para Glass */}
+
                   <Link
                     href={getFlavorWhatsappHref(flavor.name)}
                     target="_blank"
@@ -267,8 +267,8 @@ export function ShinobiOrderSection() {
                       className="relative z-10 transition-transform duration-300 group-hover:translate-x-1"
                     />
                   </Link>
-                  
-                  {/* Botão Direito do Card: Convertido para Glass */}
+
+
                   <button
                     type="button"
                     onClick={() => setActiveLabelIndex(index)}
@@ -285,7 +285,7 @@ export function ShinobiOrderSection() {
         </div>
       </div>
 
-      {/* Modal Tabela Nutricional */}
+
       {activeLabelFlavor ? (
         <div
           role="dialog"

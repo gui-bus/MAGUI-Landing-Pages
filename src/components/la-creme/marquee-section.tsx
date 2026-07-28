@@ -6,7 +6,7 @@ import { AnimatedSection } from "./motion";
 export function LaCremeMarqueeSection() {
   return (
     <>
-{/* MARQUEE */}
+
         <AnimatedSection className="bg-[#ffd8df] py-7 text-[#2b1714]">
           <div
             className="flex w-max items-center gap-10 whitespace-nowrap text-4xl font-semibold tracking-tighter md:text-4xl"

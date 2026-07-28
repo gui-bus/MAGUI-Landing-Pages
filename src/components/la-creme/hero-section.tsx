@@ -10,7 +10,7 @@ import { ease, motion } from "./motion";
 export function LaCremeHeroSection() {
   return (
     <>
-{/* HERO */}
+
         <motion.section
           id="inicio"
           className="relative min-h-260 overflow-hidden px-6 py-14 text-white md:px-12 md:py-18 lg:px-20"

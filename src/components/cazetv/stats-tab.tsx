@@ -50,7 +50,7 @@ interface Scorer {
 }
 
 export default function StatsTab({ fixtures, teamIsoCodes, onTeamClick }: StatsTabProps) {
-  // 1. Calculate Scorers and General Tournament Stats
+
   const {
     totalGoals,
     totalMatchesPlayed,
@@ -78,10 +78,10 @@ export default function StatsTab({ fixtures, teamIsoCodes, onTeamClick }: StatsT
         matchesCount++;
         goalsCount += (match.homeScore || 0) + (match.awayScore || 0);
 
-        // Accumulate team goals for Attack/Defense stats
+
         const hTeam = match.homeTeam;
         const aTeam = match.awayTeam;
-        
+
         if (hTeam) {
           teamAttack[hTeam] = (teamAttack[hTeam] || 0) + (match.homeScore || 0);
           teamDefense[hTeam] = (teamDefense[hTeam] || 0) + (match.awayScore || 0);
@@ -94,7 +94,7 @@ export default function StatsTab({ fixtures, teamIsoCodes, onTeamClick }: StatsT
 
       if (match.events) {
         match.events.forEach((event) => {
-          // Find which team the player belongs to
+
           const playerTeam = event.time === "casa" ? match.homeTeam : match.awayTeam;
           if (!playerTeam || playerTeam.startsWith("Vencedor") || playerTeam.startsWith("Perdedor") || playerTeam.startsWith("1º") || playerTeam.startsWith("2º") || playerTeam.startsWith("3º")) {
             return;
@@ -113,13 +113,13 @@ export default function StatsTab({ fixtures, teamIsoCodes, onTeamClick }: StatsT
       }
     });
 
-    // Convert scorersMap to sorted array
+
     const scorersList: Scorer[] = Object.entries(scorersMap)
       .map(([name, data]) => ({ name, team: data.team, goals: data.goals }))
       .sort((a, b) => b.goals - a.goals || a.name.localeCompare(b.name))
       .slice(0, 10);
 
-    // Convert team stats to sorted arrays (Top 5)
+
     const attackList = Object.entries(teamAttack)
       .map(([team, goals]) => ({ team, goals }))
       .sort((a, b) => b.goals - a.goals || a.team.localeCompare(b.team))
@@ -130,7 +130,7 @@ export default function StatsTab({ fixtures, teamIsoCodes, onTeamClick }: StatsT
       .sort((a, b) => a.goals - b.goals || a.team.localeCompare(b.team))
       .slice(0, 5);
 
-    // Calculate goal intervals (0-15, 16-30, 31-45, 46-60, 61-75, 76-90+)
+
     const intervals = [0, 0, 0, 0, 0, 0];
     fixtures.forEach((match) => {
       if (match.events) {
@@ -154,7 +154,7 @@ export default function StatsTab({ fixtures, teamIsoCodes, onTeamClick }: StatsT
     const maxInt = Math.max(...intervals, 1);
     const avgGoals = matchesCount > 0 ? (goalsCount / matchesCount).toFixed(2) : "0.00";
 
-    // Find biggest victory (highest goal difference) and highest scoring match
+
     let biggestVictoryMatch: Fixture | null = null;
     let maxGoalDiff = -1;
     let maxGoalDiffTotal = -1;
@@ -171,14 +171,14 @@ export default function StatsTab({ fixtures, teamIsoCodes, onTeamClick }: StatsT
         const total = (hs || 0) + (as || 0);
         const diff = Math.abs((hs || 0) - (as || 0));
 
-        // Biggest victory (goal difference)
+
         if (diff > maxGoalDiff || (diff === maxGoalDiff && total > maxGoalDiffTotal)) {
           maxGoalDiff = diff;
           maxGoalDiffTotal = total;
           biggestVictoryMatch = match;
         }
 
-        // Highest scoring match
+
         if (total > maxTotalGoals) {
           maxTotalGoals = total;
           highestScoringMatch = match;
@@ -228,9 +228,9 @@ export default function StatsTab({ fixtures, teamIsoCodes, onTeamClick }: StatsT
 
   return (
     <div className="flex flex-col gap-8 select-none">
-      {/* Top 3 Dashboard Metric Cards */}
+
       <div className="grid gap-6 grid-cols-1 md:grid-cols-3">
-        {/* Metric 1 */}
+
         <div className="rounded-2xl border border-zinc-900/60 bg-zinc-950/40 p-6 flex items-center justify-between">
           <div>
             <span className="text-[10px] font-black uppercase tracking-wider text-zinc-550 block">Partidas Concluídas</span>
@@ -241,7 +241,7 @@ export default function StatsTab({ fixtures, teamIsoCodes, onTeamClick }: StatsT
           </div>
         </div>
 
-        {/* Metric 2 */}
+
         <div className="rounded-2xl border border-zinc-900/60 bg-zinc-950/40 p-6 flex items-center justify-between">
           <div>
             <span className="text-[10px] font-black uppercase tracking-wider text-zinc-550 block">Total de Gols</span>
@@ -252,7 +252,7 @@ export default function StatsTab({ fixtures, teamIsoCodes, onTeamClick }: StatsT
           </div>
         </div>
 
-        {/* Metric 3 */}
+
         <div className="rounded-2xl border border-zinc-900/60 bg-zinc-950/40 p-6 flex items-center justify-between">
           <div>
             <span className="text-[10px] font-black uppercase tracking-wider text-zinc-550 block">Média de Gols por Jogo</span>
@@ -264,11 +264,11 @@ export default function StatsTab({ fixtures, teamIsoCodes, onTeamClick }: StatsT
         </div>
       </div>
 
-      {/* Main Stats Layout */}
+
       <div className="grid gap-8 grid-cols-1 lg:grid-cols-3">
-        {/* Left Column: Top Scorers and Time Distribution Chart */}
+
         <div className="lg:col-span-2 flex flex-col gap-8">
-          {/* Top Scorers */}
+
           <div className="rounded-2xl border border-zinc-900/60 bg-zinc-950/30 p-6">
             <div className="flex items-center gap-2 border-b border-zinc-900 pb-4 mb-6">
               <SoccerBall size={18} className="text-orange-500" />
@@ -317,7 +317,7 @@ export default function StatsTab({ fixtures, teamIsoCodes, onTeamClick }: StatsT
             </div>
           </div>
 
-          {/* Dynamic Goal Distribution Chart */}
+
           <div className="rounded-2xl border border-zinc-900/60 bg-zinc-950/30 p-6 flex flex-col justify-between">
             <div className="flex items-center gap-2 border-b border-zinc-900 pb-4 mb-6">
               <SoccerBall size={18} className="text-orange-500" />
@@ -332,25 +332,25 @@ export default function StatsTab({ fixtures, teamIsoCodes, onTeamClick }: StatsT
                 return (
                   <div key={idx} className="flex flex-col items-center flex-1 h-full justify-end group">
                     <div className="relative w-full flex flex-col items-center justify-end flex-1">
-                      {/* Tooltip on hover */}
+
                       <span className="absolute -top-7 opacity-0 group-hover:opacity-100 transition-opacity duration-250 bg-zinc-950 border border-zinc-900 text-[10px] font-black text-orange-500 px-2 py-0.5 rounded-lg shadow-2xl whitespace-nowrap z-25">
                         {count} {count === 1 ? "gol" : "gols"}
                       </span>
-                      {/* Mobile count label */}
+
                       <span className="text-[10px] font-mono font-black text-orange-500 mb-1 md:hidden select-none">
                         {count}
                       </span>
-                      {/* Bar */}
-                      <div 
-                        style={{ height: `${Math.max(pct, 5)}%` }} 
+
+                      <div
+                        style={{ height: `${Math.max(pct, 5)}%` }}
                         className={`w-full max-w-[42px] rounded-t transition-all duration-500 ease-out animate-in slide-in-from-bottom-2 duration-300 ${
-                          isPeak 
-                            ? "bg-orange-600 shadow-[0_0_15px_rgba(234,88,12,0.4)] group-hover:bg-orange-500" 
+                          isPeak
+                            ? "bg-orange-600 shadow-[0_0_15px_rgba(234,88,12,0.4)] group-hover:bg-orange-500"
                             : "bg-zinc-800 group-hover:bg-zinc-700"
                         }`}
                       />
                     </div>
-                    {/* Label */}
+
                     <span className="mt-3.5 text-[10px] font-black text-zinc-500 tracking-wider whitespace-nowrap shrink-0">
                       {labels[idx]}
                     </span>
@@ -361,9 +361,9 @@ export default function StatsTab({ fixtures, teamIsoCodes, onTeamClick }: StatsT
           </div>
         </div>
 
-        {/* Right Column: Top Attacks and Top Defenses */}
+
         <div className="lg:col-span-1 flex flex-col gap-8">
-          {/* Top Attacks */}
+
           <div className="rounded-2xl border border-zinc-900/60 bg-zinc-950/30 p-6">
             <div className="flex items-center gap-2 border-b border-zinc-900 pb-4 mb-6">
               <Flame size={18} className="text-orange-500" />
@@ -400,7 +400,7 @@ export default function StatsTab({ fixtures, teamIsoCodes, onTeamClick }: StatsT
             </div>
           </div>
 
-          {/* Top Defenses */}
+
           <div className="rounded-2xl border border-zinc-900/60 bg-zinc-950/30 p-6">
             <div className="flex items-center gap-2 border-b border-zinc-900 pb-4 mb-6">
               <ShieldCheck size={18} className="text-orange-500" />
@@ -437,7 +437,7 @@ export default function StatsTab({ fixtures, teamIsoCodes, onTeamClick }: StatsT
             </div>
           </div>
 
-          {/* Tournament Records */}
+
           <div className="rounded-2xl border border-zinc-900/60 bg-zinc-950/30 p-6">
             <div className="flex items-center gap-2 border-b border-zinc-900 pb-4 mb-6">
               <Flame size={18} className="text-orange-500 animate-pulse" />
@@ -445,7 +445,7 @@ export default function StatsTab({ fixtures, teamIsoCodes, onTeamClick }: StatsT
             </div>
 
             <div className="flex flex-col gap-5 text-xs text-zinc-400">
-              {/* Biggest Victory */}
+
               {biggestVictoryMatch && (
                 <div className="flex flex-col gap-2">
                   <span className="text-[9px] font-black uppercase tracking-widest text-zinc-500">Maior Goleada</span>
@@ -477,7 +477,7 @@ export default function StatsTab({ fixtures, teamIsoCodes, onTeamClick }: StatsT
                 </div>
               )}
 
-              {/* Highest Scoring Match */}
+
               {highestScoringMatch && (
                 <div className="flex flex-col gap-2">
                   <span className="text-[9px] font-black uppercase tracking-widest text-zinc-500">Jogo com Mais Gols</span>

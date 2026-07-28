@@ -8,7 +8,7 @@ import { AnimatedSection, imageReveal, motion, staggerReveal } from "./motion";
 export function LaCremeCookiesSection() {
   return (
     <>
-{/* COOKIES */}
+
         <AnimatedSection className="relative min-h-175 lg:min-h-212 w-full overflow-hidden flex items-center bg-[#2b1714]">
           <motion.div
             className="absolute inset-0 w-full h-full"

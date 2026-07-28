@@ -28,14 +28,14 @@ export default function FixturesFilter({
 }: FixturesFilterProps) {
   const hasActiveFilters = searchTerm !== "" || selectedStage !== "all" || selectedGroup !== "all";
 
-  // Dropdown states
+
   const [isOpenStage, setIsOpenStage] = useState(false);
   const [isOpenGroup, setIsOpenGroup] = useState(false);
 
   const stageRef = useRef<HTMLDivElement>(null);
   const groupRef = useRef<HTMLDivElement>(null);
 
-  // Close dropdowns on click outside
+
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (stageRef.current && !stageRef.current.contains(event.target as Node)) {
@@ -57,7 +57,7 @@ export default function FixturesFilter({
   return (
     <div className="bg-transparent p-0 select-none">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-center">
-        {/* Search Input */}
+
         <div className="relative flex-grow">
           <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-zinc-500">
             <MagnifyingGlass size={18} className="text-zinc-400" />
@@ -71,9 +71,9 @@ export default function FixturesFilter({
           />
         </div>
 
-        {/* Custom Dropdowns */}
+
         <div className="flex flex-wrap gap-3 z-30">
-          {/* Custom Stage Dropdown */}
+
           <div ref={stageRef} className="relative">
             <button
               onClick={() => {
@@ -117,7 +117,7 @@ export default function FixturesFilter({
             )}
           </div>
 
-          {/* Custom Group Dropdown */}
+
           <div ref={groupRef} className="relative">
             <button
               onClick={() => {
@@ -161,7 +161,7 @@ export default function FixturesFilter({
             )}
           </div>
 
-          {/* Clear Filters Button */}
+
           {hasActiveFilters && (
             <button
               onClick={handleClearFilters}

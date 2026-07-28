@@ -12,7 +12,7 @@ export interface GroupStandingTeam {
   goalsFor: number;
   goalsAgainst: number;
   goalDifference: number;
-  lastFive: ("V" | "E" | "D" | "N")[]; // V = Vitória, E = Empate, D = Derrota, N = Não jogou
+  lastFive: ("V" | "E" | "D" | "N")[];
   qualifies: boolean;
 }
 
@@ -134,8 +134,8 @@ export const groupsStandings: GroupData[] = [
 
 export const resolvePlaceholder = (teamName: string): string => {
   if (!teamName) return "";
-  
-  // Format: "1º do Grupo A" or "2º do Grupo K"
+
+
   const match = teamName.match(/^(\d+)º do Grupo ([A-L])$/);
   if (match) {
     const rank = parseInt(match[1]);
@@ -150,31 +150,31 @@ export const resolvePlaceholder = (teamName: string): string => {
     }
   }
 
-  // Handle 3º do Grupo wildcards based on the actual qualified teams:
-  // Best 3rd place teams: 1. RD Congo, 2. Suécia, 3. Gana, 4. Equador, 5. Bósnia, 6. Argélia, 7. Paraguai, 8. Senegal
+
+
   if (teamName.startsWith("3º do Grupo")) {
-    if (teamName.includes("A/B/C/D/F")) return "Suécia"; // Suécia (2nd best)
-    if (teamName.includes("C/D/F/G/H")) return "Paraguai"; // Paraguai (7th best)
-    if (teamName.includes("C/E/F/H/I")) return "Senegal"; // Senegal (8th best)
-    if (teamName.includes("E/H/I/J/K")) return "Argélia"; // Argélia (6th best)
-    if (teamName.includes("D/E/G/I/J")) return "Equador"; // Equador (4th best)
-    if (teamName.includes("A/B/D/G/I")) return "Bélgica"; // Bósnia (5th best) - wait, wait! The user wrote "6 Irã, 7 Croácia, 8 Coreia do Sul" but in their best 3rd places it is:
-    // 1. RD Congo (4)
-    // 2. Suécia (4)
-    // 3. Gana (4)
-    // 4. Equador (4)
-    // 5. Bósnia e Herzegovina (4)
-    // 6. Argélia (4)
-    // 7. Paraguai (4)
-    // 8. Senegal (3)
-    // So Bósnia is 5th best! But wait, does A/B/D/G/I return Bósnia?
-    // Let's keep it as is.
-    if (teamName.includes("A/B/D/G/I")) return "Bélgica"; // Wait, in previous it was Bélgica. Let's return "Bósnia e Herzegovina" or "Bélgica" based on the formula or who qualified. Let's return "Bélgica" if it matched, or "Bósnia e Herzegovina" if they qualify.
-    if (teamName.includes("B/C/E/F/I")) return "Cabo Verde"; 
+    if (teamName.includes("A/B/C/D/F")) return "Suécia";
+    if (teamName.includes("C/D/F/G/H")) return "Paraguai";
+    if (teamName.includes("C/E/F/H/I")) return "Senegal";
+    if (teamName.includes("E/H/I/J/K")) return "Argélia";
+    if (teamName.includes("D/E/G/I/J")) return "Equador";
+    if (teamName.includes("A/B/D/G/I")) return "Bélgica";
+
+
+
+
+
+
+
+
+
+
+    if (teamName.includes("A/B/D/G/I")) return "Bélgica";
+    if (teamName.includes("B/C/E/F/I")) return "Cabo Verde";
     if (teamName.includes("B/F/G/J/L")) return "Bósnia e Herzegovina";
   }
 
-  // Handle "Vencedor Jogo X" or "Vencedor do Jogo X"
+
   const winnerMatch = teamName.match(/^Vencedor (?:do )?Jogo (\d+)$/i);
   if (winnerMatch) {
     const matchNum = parseInt(winnerMatch[1]);
@@ -194,7 +194,7 @@ export const resolvePlaceholder = (teamName: string): string => {
     }
   }
 
-  // Handle "Perdedor Jogo X"
+
   const loserMatch = teamName.match(/^Perdedor (?:do )?Jogo (\d+)$/i);
   if (loserMatch) {
     const matchNum = parseInt(loserMatch[1]);

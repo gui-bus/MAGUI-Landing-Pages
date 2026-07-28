@@ -81,19 +81,19 @@ export function ShinobiFlavorsSection({
       <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-black/50" />
 
       <div className="relative z-10 mx-auto max-w-[1540px] items-center gap-10 px-5 py-24 md:px-8 lg:px-10">
-        
+
         <h2 className="text-5xl font-extrabold uppercase tracking-tight leading-[0.9] [font-family:var(--font-shinobi-display)] sm:text-7xl md:text-8xl lg:text-[100px]">
           Seis sabores. <br />
           <span className="text-neutral-500">Um só destino.</span>
         </h2>
 
         <p className="mt-8 max-w-xl text-base leading-relaxed text-neutral-400">
-          Descubra a coleção completa de energéticos SHINOBI. Cada lata possui 
-          uma identidade própria, notas sensoriais marcantes e o mesmo perfil 
+          Descubra a coleção completa de energéticos SHINOBI. Cada lata possui
+          uma identidade própria, notas sensoriais marcantes e o mesmo perfil
           essencial de foco.
         </p>
 
-        {/* Botões com efeito Glassmorphism Premium aplicados */}
+
         <div className="mt-10 flex flex-wrap gap-4">
           <Link
             href="#pedido"
@@ -120,7 +120,7 @@ export function ShinobiFlavorsSection({
           </button>
         </div>
 
-        {/* Animação da Lata */}
+
         <div className="relative z-20 h-[760px] w-full overflow-hidden">
           <AnimatePresence initial={false}>
             <motion.div
@@ -147,7 +147,7 @@ export function ShinobiFlavorsSection({
         </div>
       </div>
 
-      {/* Modal */}
+
       {nutritionFlavor ? (
         <div
           role="dialog"

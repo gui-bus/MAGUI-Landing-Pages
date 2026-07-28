@@ -8,7 +8,7 @@ import { AnimatedSection, imageReveal, itemReveal, motion, staggerReveal } from 
 export function LaCremeAtelierSection() {
   return (
     <>
-{/* ATELIER */}
+
         <AnimatedSection
           id="atelier"
           className="bg-[#F3F3F3] px-5 py-24 md:px-8 md:py-32 lg:px-10"

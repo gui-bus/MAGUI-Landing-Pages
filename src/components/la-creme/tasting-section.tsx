@@ -6,7 +6,7 @@ import { AnimatedSection, ease, itemReveal, motion, staggerReveal } from "./moti
 export function LaCremeTastingSection() {
   return (
     <>
-{/* DEGUSTAÇÃO */}
+
         <AnimatedSection className="px-5 py-20 md:px-8 md:py-24 lg:px-10 bg-[#F3F3F3]">
           <motion.div className="mx-auto max-w-385" variants={staggerReveal}>
             <motion.div

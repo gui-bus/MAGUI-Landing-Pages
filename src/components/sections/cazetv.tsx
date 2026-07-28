@@ -6,7 +6,7 @@ import Link from "next/link";
 import { cazetvDisplay, cazetvText } from "../cazetv/fonts";
 import fixturesData from "../cazetv/world-cup-2026-fixtures.json";
 
-// Import modular components
+
 import CurtainLoader from "../cazetv/curtain-loader";
 import Header from "../cazetv/header";
 import HeroSection from "../cazetv/hero-section";
@@ -46,7 +46,7 @@ interface Fixture {
   events?: MatchEvent[];
 }
 
-// Mapeamento das seleções para seus respectivos códigos ISO de 2 letras
+
 const teamIsoCodes: Record<string, string> = {
   "Argélia": "DZ",
   "Argentina": "AR",
@@ -98,7 +98,7 @@ const teamIsoCodes: Record<string, string> = {
   "Uzbequistão": "UZ"
 };
 
-// Tradução amigável das fases do torneio
+
 const stageTranslations: Record<string, string> = {
   "group-stage": "Fase de Grupos",
   "round-of-32": "Dezesseis-avos de Final",
@@ -117,11 +117,11 @@ export default function CazeTVLanding() {
   const [matchStateFilter, setMatchStateFilter] = useState<"all" | "completed" | "upcoming">("all");
   const [selectedMatchNumber, setSelectedMatchNumber] = useState<number | null>(null);
 
-  // States for smooth modal opening/closing animations
+
   const [renderedMatch, setRenderedMatch] = useState<Fixture | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Lock body scroll when drawer/modal is open to prevent double scrollbars
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       if (isModalOpen) {
@@ -137,20 +137,20 @@ export default function CazeTVLanding() {
     };
   }, [isModalOpen]);
 
-  // Infinite Scroll / Lazy Load states
+
   const [visibleCount, setVisibleCount] = useState(12);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const loaderRef = useRef<HTMLDivElement>(null);
 
   const { fixtures } = fixturesData;
 
-  // Sync state with URL query parameters on load & popstate changes
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       const params = new URLSearchParams(window.location.search);
       const tabParam = params.get("tab");
       const matchParam = params.get("match");
-      
+
       if (tabParam === "jogos" || tabParam === "grupos" || tabParam === "chaveamento" || tabParam === "estatisticas") {
         setActiveTab(tabParam);
       }
@@ -199,7 +199,7 @@ export default function CazeTVLanding() {
     }
   }, [fixtures]);
 
-  // Fechar modal/drawer ao pressionar ESC
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape" && isModalOpen) {
@@ -240,7 +240,7 @@ export default function CazeTVLanding() {
       url.searchParams.delete("match");
       window.history.pushState({}, "", url.toString());
     }
-    // Wait for the transition out animation to finish before clearing state
+
     setTimeout(() => {
       setSelectedMatchNumber(null);
       setRenderedMatch(null);
@@ -253,7 +253,7 @@ export default function CazeTVLanding() {
     setSelectedStage("all");
     setSelectedGroup("all");
     handleTabChange("jogos");
-    
+
     if (typeof window !== "undefined") {
       setTimeout(() => {
         const filtersSection = document.getElementById("jogos-filters");
@@ -264,7 +264,7 @@ export default function CazeTVLanding() {
     }
   };
 
-  // Extrair todos os grupos únicos presentes na fase de grupos
+
   const groups = Array.from(
     new Set(
       fixtures
@@ -273,7 +273,7 @@ export default function CazeTVLanding() {
     )
   ).sort() as string[];
 
-  // Filtrar os jogos de acordo com os estados do filtro
+
   const filteredFixtures = fixtures.filter((fixture) => {
     const home = fixture.homeTeam || "";
     const away = fixture.awayTeam || "";
@@ -293,7 +293,7 @@ export default function CazeTVLanding() {
     return matchesSearch && matchesStage && matchesGroup && matchesState;
   });
 
-  // Group matches by date to break visual repetition
+
   const fixturesByDate: Record<string, typeof fixtures> = {};
   filteredFixtures.slice(0, visibleCount).forEach((fixture) => {
     const d = fixture.date;
@@ -314,19 +314,19 @@ export default function CazeTVLanding() {
         year: "numeric"
       };
       const formatted = date.toLocaleDateString("pt-BR", options);
-      // Capitalize first letter
+
       return formatted.charAt(0).toUpperCase() + formatted.slice(1);
     } catch {
       return dateStr;
     }
   };
 
-  // Reset pagination count on search/filter changes
+
   useEffect(() => {
     setVisibleCount(12);
   }, [searchTerm, selectedStage, selectedGroup, matchStateFilter]);
 
-  // Observer intersection to trigger show more
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -366,9 +366,9 @@ export default function CazeTVLanding() {
       className={`${cazetvText.className} ${cazetvText.variable} ${cazetvDisplay.variable} min-h-screen bg-neutral-950 text-zinc-100 flex flex-col`}
       style={{ fontFamily: "var(--font-cazetv-text), sans-serif" }}
     >
-      {/* Preconnect for performance */}
+
       <link rel="preconnect" href="https://flagcdn.com" crossOrigin="anonymous" />
-      {/* Disclaimer Banner */}
+
       <div className="w-full bg-orange-950/10 border-b border-orange-900/20 py-3 px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-xs text-orange-400">
           <div className="flex items-center gap-2">
@@ -383,24 +383,24 @@ export default function CazeTVLanding() {
         </div>
       </div>
 
-      {/* Curtain Loading Animation */}
+
       <CurtainLoader />
 
-      {/* Header */}
+
       <Header />
 
-      {/* Hero Section */}
+
       <HeroSection
         fixtures={fixtures}
         stageTranslations={stageTranslations}
         teamIsoCodes={teamIsoCodes}
       />
 
-      {/* Navigation Tabs */}
+
       <div className="mx-auto w-full px-0 sm:px-6 lg:px-8 mt-10 relative">
-        {/* Left fade overlay */}
+
         <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-neutral-950 to-transparent pointer-events-none z-10 md:hidden" />
-        {/* Right fade overlay */}
+
         <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-neutral-950 to-transparent pointer-events-none z-10 md:hidden" />
 
         <div className="border-b border-zinc-900 overflow-x-auto scrollbar-none">
@@ -449,13 +449,13 @@ export default function CazeTVLanding() {
         </div>
       </div>
 
-      {/* Main Content & Filters */}
+
       <section className="mx-auto w-full px-4 py-8 sm:px-6 lg:px-8 flex-grow">
         {activeTab === "jogos" ? (
           <>
-            {/* Filters Section Anchor */}
+
             <div id="jogos-filters" className="flex flex-col gap-6">
-              {/* Game State Buttons/Pills */}
+
               <div className="flex flex-wrap gap-2.5 border-b border-zinc-900/60 pb-4">
                 <button
                   onClick={() => setMatchStateFilter("all")}
@@ -502,7 +502,7 @@ export default function CazeTVLanding() {
               />
             </div>
 
-            {/* Match Fixtures List */}
+
             <div className="mt-8">
               {filteredFixtures.length === 0 ? (
                 <div className="mt-12 text-center rounded-2xl border border-zinc-900 bg-zinc-950/20 py-16 px-6 max-w-md mx-auto flex flex-col items-center gap-4">
@@ -552,7 +552,7 @@ export default function CazeTVLanding() {
                     ))}
                   </div>
 
-                  {/* Lazy Loading Trigger element */}
+
                   {visibleCount < filteredFixtures.length && (
                     <div ref={loaderRef} className="flex flex-col items-center justify-center py-12 mt-6">
                       {isLoadingMore ? (
@@ -587,7 +587,7 @@ export default function CazeTVLanding() {
           </div>
         )}
 
-        {/* Dynamic Details Modal */}
+
         {(() => {
           if (!renderedMatch) return null;
           const selectedMatch = renderedMatch;
@@ -616,7 +616,7 @@ export default function CazeTVLanding() {
                 </div>
               );
             }
-            
+
             let flagUrl = "";
             if (teamName === "Inglaterra") {
               flagUrl = "https://flagcdn.com/gb-eng.svg";
@@ -654,7 +654,7 @@ export default function CazeTVLanding() {
           const awayResolved = resolvePlaceholder(selectedMatch.awayTeam);
           const hasScore = typeof selectedMatch.homeScore === "number" && typeof selectedMatch.awayScore === "number";
 
-           // Calculate tournament stats for both teams
+
           const getTeamStats = (teamName: string) => {
             let matchesPlayed = 0;
             let wins = 0;
@@ -668,7 +668,7 @@ export default function CazeTVLanding() {
               const as = match.awayScore;
               const hsNum = typeof hs === "number";
               const asNum = typeof as === "number";
-              
+
               if (hsNum && asNum) {
                 const matchHomeResolved = resolvePlaceholder(match.homeTeam);
                 const matchAwayResolved = resolvePlaceholder(match.awayTeam);
@@ -698,24 +698,24 @@ export default function CazeTVLanding() {
 
           return (
             <>
-              {/* Backdrop Overlay */}
-              <div 
+
+              <div
                 onClick={handleCloseModal}
                 className={`fixed inset-0 z-50 bg-black/70 transition-opacity duration-300 ease-in-out ${
                   isModalOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
                 }`}
               />
 
-              {/* Drawer Container (Constrained by max-w-440 of layout.tsx) */}
+
               <div className="fixed inset-0 z-50 pointer-events-none">
                 <div className="relative w-full h-full max-w-440 mx-auto">
-                  {/* Drawer Panel */}
-                  <div 
+
+                  <div
                     className={`absolute top-0 right-0 h-full w-full max-w-md bg-zinc-950 border-l border-zinc-900 shadow-2xl flex flex-col transition-transform duration-300 ease-in-out transform pointer-events-auto ${
                       isModalOpen ? "translate-x-0" : "translate-x-full"
                     }`}
                   >
-                {/* Drawer Header */}
+
                 <div className="flex items-center justify-between border-b border-zinc-900 p-6 shrink-0">
                   <div className="text-[10px] font-black uppercase tracking-widest text-zinc-500 flex items-center gap-2">
                     <span>Jogo {selectedMatch.matchNumber}</span>
@@ -732,15 +732,15 @@ export default function CazeTVLanding() {
                   </button>
                 </div>
 
-                {/* Drawer Scrollable Content */}
+
                 <div className="flex-1 overflow-y-auto p-6 md:p-8 scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent flex flex-col gap-6">
-                  {/* Core Match Row */}
+
                   <div className="grid grid-cols-3 items-center gap-2 py-4 border-b border-zinc-900/60 pb-6 mb-6 shrink-0">
                     <div className="flex flex-col items-center text-center gap-2">
                       {renderModalFlag(selectedMatch.homeTeam)}
                       <span className="text-xs font-black text-white">{homeResolved || "A Definir"}</span>
                     </div>
-                    
+
                     <div className="flex flex-col items-center">
                       <div className="font-mono text-3xl font-black text-white tracking-tighter">
                         {hasScore ? (
@@ -766,7 +766,7 @@ export default function CazeTVLanding() {
                     </div>
                   </div>
 
-                  {/* Events Timeline */}
+
                   {selectedMatch.events && selectedMatch.events.length > 0 && (
                     <div className="mb-2 flex flex-col shrink-0">
                       <h4 className="text-[9px] font-black uppercase tracking-widest text-zinc-500 mb-4">Acontecimentos</h4>
@@ -783,7 +783,7 @@ export default function CazeTVLanding() {
                           })
                           .map((event, idx) => {
                             const isHome = event.time === "casa";
-                            
+
                             let icon: React.ReactNode = <SoccerBall size={14} className="text-zinc-400 shrink-0" />;
                             let labelColor = "text-zinc-300";
                             if (event.tipo === "gol") {
@@ -799,7 +799,7 @@ export default function CazeTVLanding() {
 
                             return (
                               <div key={idx} className="relative flex items-center w-full min-h-[32px]">
-                                {/* Left column (Home events) */}
+
                                 <div className={`w-1/2 pr-6 text-right text-xs ${isHome ? "opacity-100 animate-in fade-in slide-in-from-left-2 duration-200" : "opacity-0 pointer-events-none"}`}>
                                   {isHome && (
                                     <div className="flex items-center justify-end gap-1.5">
@@ -814,14 +814,14 @@ export default function CazeTVLanding() {
                                   )}
                                 </div>
 
-                                {/* Center Node (Minute Badge) */}
+
                                 <div className="absolute left-1/2 -translate-x-1/2 z-10 flex flex-col items-center justify-center">
                                   <div className="flex h-6 w-6 items-center justify-center rounded-full bg-zinc-950 border border-zinc-900 text-[9px] font-black text-zinc-500 shadow-md">
                                     {event.minuto}'
                                   </div>
                                 </div>
 
-                                {/* Right column (Away events) */}
+
                                 <div className={`w-1/2 pl-6 text-left text-xs ${!isHome ? "opacity-100 animate-in fade-in slide-in-from-right-2 duration-200" : "opacity-0 pointer-events-none"}`}>
                                   {!isHome && (
                                     <div className="flex items-center justify-start gap-1.5">
@@ -842,7 +842,7 @@ export default function CazeTVLanding() {
                     </div>
                   )}
 
-                  {/* H2H Panel */}
+
                   {(homeStats.matchesPlayed > 0 || awayStats.matchesPlayed > 0) && (
                     <div className="rounded-2xl bg-zinc-900/10 border border-zinc-900 p-4 text-xs shrink-0">
                       <h4 className="text-[9px] font-black uppercase tracking-widest text-zinc-500 mb-3 text-center">
@@ -878,7 +878,7 @@ export default function CazeTVLanding() {
                     </div>
                   )}
 
-                  {/* Match Details Extra info */}
+
                   <div className="flex flex-col gap-2.5 text-xs text-zinc-400 border-t border-zinc-900/60 pt-6 shrink-0">
                     <div className="flex justify-between items-center py-1">
                       <span className="text-zinc-500 font-medium">Horário da Partida</span>
@@ -894,7 +894,7 @@ export default function CazeTVLanding() {
                     </div>
                   </div>
 
-                  {/* Watch CTA Button */}
+
                   {selectedMatch.matchUrl && (
                     <div className="mt-auto pt-6 shrink-0">
                       <Link
@@ -917,7 +917,7 @@ export default function CazeTVLanding() {
         })()}
       </section>
 
-      {/* Footer */}
+
       <Footer />
     </main>
   );

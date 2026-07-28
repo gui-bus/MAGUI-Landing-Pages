@@ -14,10 +14,10 @@ export function KromaMonitoringSection() {
       className="bg-[#1E1E1E] text-white py-24 md:py-36"
     >
       <div className="mx-auto max-w-[1560px]">
-        {/* HEADER BRUTALISTA */}
+
         <div className="kroma-reveal max-w-5xl">
           <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#FFBC4F]">
-            [ 04 // Telemetria ativa ]
+            [ 04
           </div>
           <h2
             className={`mt-6 text-5xl font-light tracking-[-0.03em] sm:text-7xl md:text-8xl xl:text-[100px] leading-[0.95] ${alexandria.className}`}
@@ -26,12 +26,12 @@ export function KromaMonitoringSection() {
           </h2>
         </div>
 
-        {/* DIVISOR LIMPO */}
+
         <hr className="my-20 border-white/10" />
 
-        {/* GRADE PRINCIPAL DE CONTEÚDO */}
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          {/* TEXTO DE ESCOPO + INDICADORES */}
+
           <div className="lg:col-span-5 space-y-16">
             <p className="text-lg md:text-xl text-white/60 leading-relaxed max-w-md">
               A KROMA acompanha de perto a economia real, mitigando desvios e
@@ -39,7 +39,7 @@ export function KromaMonitoringSection() {
               desempenho projetado.
             </p>
 
-            {/* Linha técnica com dados numéricos crus */}
+
             <div className="space-y-8 border-l-2 border-[#FFBC4F] pl-6">
               {indicators.map(([value, label]) => (
                 <div key={label} className="flex flex-col transition duration-300 hover:translate-x-2">
@@ -56,7 +56,7 @@ export function KromaMonitoringSection() {
             </div>
           </div>
 
-          {/* LISTA DE SOLUÇÕES (DIREITA) */}
+
           <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
             {monitoring.map((item, index) => {
               const Icon = item.icon;
@@ -66,7 +66,7 @@ export function KromaMonitoringSection() {
                   key={item.title}
                   className="kroma-reveal group flex flex-col items-start"
                 >
-                  {/* Ícone sutil no topo do bloco */}
+
                   <div className="p-3 bg-white/5 border border-white/10 mb-6 text-[#FFBC4F] transition duration-300 group-hover:border-[#FFBC4F]">
                     <Icon size={20} weight="light" />
                   </div>
