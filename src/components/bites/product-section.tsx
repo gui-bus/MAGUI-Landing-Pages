@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { bitesImages, bitesWhatsapp } from "./data";
 import { bitesHeading } from "./fonts";
-import { BitesButton, BitesLabel } from "./ui";
+import { BitesButton } from "./ui";
 
 const featuredProducts = [
   {

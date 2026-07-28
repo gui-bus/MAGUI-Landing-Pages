@@ -36,7 +36,7 @@ export function HavenTestimonialsSection() {
               />
               <div className="grid gap-4 p-5">
                 <p className="text-lg leading-8 text-[#14283D]/76">
-                  "{item.quote}"
+                  &quot;{item.quote}&quot;
                 </p>
                 <div className="border-t border-[#14283D]/10 pt-4">
                   <p className="text-sm font-semibold text-[#14283D]">

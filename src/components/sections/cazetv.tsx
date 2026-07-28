@@ -115,8 +115,6 @@ export default function CazeTVLanding() {
   const [selectedStage, setSelectedStage] = useState("all");
   const [selectedGroup, setSelectedGroup] = useState("all");
   const [matchStateFilter, setMatchStateFilter] = useState<"all" | "completed" | "upcoming">("all");
-  const [selectedMatchNumber, setSelectedMatchNumber] = useState<number | null>(null);
-
 
   const [renderedMatch, setRenderedMatch] = useState<Fixture | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -152,6 +150,7 @@ export default function CazeTVLanding() {
       const matchParam = params.get("match");
 
       if (tabParam === "jogos" || tabParam === "grupos" || tabParam === "chaveamento" || tabParam === "estatisticas") {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setActiveTab(tabParam);
       }
       if (matchParam) {
@@ -161,7 +160,6 @@ export default function CazeTVLanding() {
           if (match) {
             setRenderedMatch(match);
             setIsModalOpen(true);
-            setSelectedMatchNumber(mNum);
           }
         }
       }
@@ -182,13 +180,11 @@ export default function CazeTVLanding() {
             if (match) {
               setRenderedMatch(match);
               setIsModalOpen(true);
-              setSelectedMatchNumber(mNum);
             }
           }
         } else {
           setIsModalOpen(false);
           setTimeout(() => {
-            setSelectedMatchNumber(null);
             setRenderedMatch(null);
           }, 200);
         }
@@ -199,6 +195,19 @@ export default function CazeTVLanding() {
     }
   }, [fixtures]);
 
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    if (typeof window !== "undefined") {
+      const url = new URL(window.location.href);
+      url.searchParams.delete("match");
+      window.history.pushState({}, "", url.toString());
+    }
+
+    setTimeout(() => {
+      setRenderedMatch(null);
+    }, 300);
+  };
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -224,7 +233,6 @@ export default function CazeTVLanding() {
     if (match) {
       setRenderedMatch(match);
       setIsModalOpen(true);
-      setSelectedMatchNumber(matchNumber);
       if (typeof window !== "undefined") {
         const url = new URL(window.location.href);
         url.searchParams.set("match", matchNumber.toString());
@@ -233,19 +241,7 @@ export default function CazeTVLanding() {
     }
   };
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    if (typeof window !== "undefined") {
-      const url = new URL(window.location.href);
-      url.searchParams.delete("match");
-      window.history.pushState({}, "", url.toString());
-    }
 
-    setTimeout(() => {
-      setSelectedMatchNumber(null);
-      setRenderedMatch(null);
-    }, 300);
-  };
 
   const handleTeamClick = (teamName: string) => {
     if (!teamName || teamName.startsWith("Vencedor") || teamName.startsWith("Perdedor") || teamName.startsWith("1º") || teamName.startsWith("2º") || teamName.startsWith("3º")) return;
@@ -323,6 +319,7 @@ export default function CazeTVLanding() {
 
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setVisibleCount(12);
   }, [searchTerm, selectedStage, selectedGroup, matchStateFilter]);
 
@@ -392,7 +389,6 @@ export default function CazeTVLanding() {
 
       <HeroSection
         fixtures={fixtures}
-        stageTranslations={stageTranslations}
         teamIsoCodes={teamIsoCodes}
       />
 
@@ -817,7 +813,7 @@ export default function CazeTVLanding() {
 
                                 <div className="absolute left-1/2 -translate-x-1/2 z-10 flex flex-col items-center justify-center">
                                   <div className="flex h-6 w-6 items-center justify-center rounded-full bg-zinc-950 border border-zinc-900 text-[9px] font-black text-zinc-500 shadow-md">
-                                    {event.minuto}'
+                                    {event.minuto}&apos;
                                   </div>
                                 </div>
 

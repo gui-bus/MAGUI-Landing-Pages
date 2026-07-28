@@ -22,13 +22,11 @@ interface Fixture {
 
 interface HeroSectionProps {
   fixtures: Fixture[];
-  stageTranslations: Record<string, string>;
   teamIsoCodes: Record<string, string>;
 }
 
 export default function HeroSection({
   fixtures,
-  stageTranslations,
   teamIsoCodes,
 }: HeroSectionProps) {
   const [concurrentMatches, setConcurrentMatches] = useState<Fixture[]>([]);

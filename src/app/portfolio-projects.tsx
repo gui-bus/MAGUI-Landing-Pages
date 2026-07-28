@@ -46,6 +46,7 @@ export function PortfolioProjects({ projects }: PortfolioProjectsProps) {
     : "Todos";
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setQuery(searchParams.get("q") ?? "");
     setActiveIndustry(searchParams.get("industry") ?? "Todos");
   }, [searchParams]);

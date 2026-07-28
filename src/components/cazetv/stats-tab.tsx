@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 import Image from "next/image";
-import { SoccerBall, IdentificationCard, ShieldCheck, Flame, Info } from "@phosphor-icons/react";
+import { SoccerBall, ShieldCheck, Flame, Info } from "@phosphor-icons/react";
 
 interface MatchEvent {
   tipo: string;
@@ -452,25 +452,25 @@ export default function StatsTab({ fixtures, teamIsoCodes, onTeamClick }: StatsT
                   <div className="rounded-xl bg-zinc-900/20 border border-zinc-900/40 p-3.5 flex flex-col gap-2.5">
                     <div className="flex items-center justify-between font-black text-white">
                       <button
-                        onClick={() => onTeamClick((biggestVictoryMatch as any).homeTeam)}
+                        onClick={() => onTeamClick((biggestVictoryMatch as Fixture).homeTeam)}
                         className="flex items-center gap-1.5 hover:text-orange-500 transition focus:outline-none"
                       >
-                        {renderFlag((biggestVictoryMatch as any).homeTeam)}
-                        <span className="truncate max-w-[80px] sm:max-w-none">{(biggestVictoryMatch as any).homeTeam}</span>
+                        {renderFlag((biggestVictoryMatch as Fixture).homeTeam)}
+                        <span className="truncate max-w-[80px] sm:max-w-none">{(biggestVictoryMatch as Fixture).homeTeam}</span>
                       </button>
                       <span className="font-mono text-orange-500 bg-orange-600/10 px-2 py-0.5 rounded border border-orange-500/10 shrink-0 mx-2 text-[10px]">
-                        {(biggestVictoryMatch as any).homeScore} - {(biggestVictoryMatch as any).awayScore}
+                        {(biggestVictoryMatch as Fixture).homeScore} - {(biggestVictoryMatch as Fixture).awayScore}
                       </span>
                       <button
-                        onClick={() => onTeamClick((biggestVictoryMatch as any).awayTeam)}
+                        onClick={() => onTeamClick((biggestVictoryMatch as Fixture).awayTeam)}
                         className="flex items-center gap-1.5 hover:text-orange-500 transition focus:outline-none"
                       >
-                        <span className="truncate max-w-[80px] sm:max-w-none">{(biggestVictoryMatch as any).awayTeam}</span>
-                        {renderFlag((biggestVictoryMatch as any).awayTeam)}
+                        <span className="truncate max-w-[80px] sm:max-w-none">{(biggestVictoryMatch as Fixture).awayTeam}</span>
+                        {renderFlag((biggestVictoryMatch as Fixture).awayTeam)}
                       </button>
                     </div>
                     <div className="flex justify-between items-center text-[9px] font-extrabold uppercase text-zinc-500 tracking-wider">
-                      <span>{stageTranslations[(biggestVictoryMatch as any).stage] || (biggestVictoryMatch as any).stage}</span>
+                      <span>{stageTranslations[(biggestVictoryMatch as Fixture).stage] || (biggestVictoryMatch as Fixture).stage}</span>
                       <span>Diferença: +{maxGoalDiff} gols</span>
                     </div>
                   </div>
@@ -484,25 +484,25 @@ export default function StatsTab({ fixtures, teamIsoCodes, onTeamClick }: StatsT
                   <div className="rounded-xl bg-zinc-900/20 border border-zinc-900/40 p-3.5 flex flex-col gap-2.5">
                     <div className="flex items-center justify-between font-black text-white">
                       <button
-                        onClick={() => onTeamClick((highestScoringMatch as any).homeTeam)}
+                        onClick={() => onTeamClick((highestScoringMatch as Fixture).homeTeam)}
                         className="flex items-center gap-1.5 hover:text-orange-500 transition focus:outline-none"
                       >
-                        {renderFlag((highestScoringMatch as any).homeTeam)}
-                        <span className="truncate max-w-[80px] sm:max-w-none">{(highestScoringMatch as any).homeTeam}</span>
+                        {renderFlag((highestScoringMatch as Fixture).homeTeam)}
+                        <span className="truncate max-w-[80px] sm:max-w-none">{(highestScoringMatch as Fixture).homeTeam}</span>
                       </button>
                       <span className="font-mono text-orange-500 bg-orange-600/10 px-2 py-0.5 rounded border border-orange-500/10 shrink-0 mx-2 text-[10px]">
-                        {(highestScoringMatch as any).homeScore} - {(highestScoringMatch as any).awayScore}
+                        {(highestScoringMatch as Fixture).homeScore} - {(highestScoringMatch as Fixture).awayScore}
                       </span>
                       <button
-                        onClick={() => onTeamClick((highestScoringMatch as any).awayTeam)}
+                        onClick={() => onTeamClick((highestScoringMatch as Fixture).awayTeam)}
                         className="flex items-center gap-1.5 hover:text-orange-500 transition focus:outline-none"
                       >
-                        <span className="truncate max-w-[80px] sm:max-w-none">{(highestScoringMatch as any).awayTeam}</span>
-                        {renderFlag((highestScoringMatch as any).awayTeam)}
+                        <span className="truncate max-w-[80px] sm:max-w-none">{(highestScoringMatch as Fixture).awayTeam}</span>
+                        {renderFlag((highestScoringMatch as Fixture).awayTeam)}
                       </button>
                     </div>
                     <div className="flex justify-between items-center text-[9px] font-extrabold uppercase text-zinc-500 tracking-wider">
-                      <span>{stageTranslations[(highestScoringMatch as any).stage] || (highestScoringMatch as any).stage}</span>
+                      <span>{stageTranslations[(highestScoringMatch as Fixture).stage] || (highestScoringMatch as Fixture).stage}</span>
                       <span>Total: {maxTotalGoals} gols</span>
                     </div>
                   </div>

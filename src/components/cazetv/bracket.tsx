@@ -3,7 +3,7 @@
 import { useState, useRef } from "react";
 import Image from "next/image";
 import { resolvePlaceholder } from "./groups-data";
-import { Warning, Trophy } from "@phosphor-icons/react";
+import { Trophy } from "@phosphor-icons/react";
 
 interface MatchEvent {
   tipo: string;
@@ -39,7 +39,6 @@ interface BracketProps {
 }
 
 export default function Bracket({ fixtures, teamIsoCodes, onShowDetails }: BracketProps) {
-  const [activeMobileRound, setActiveMobileRound] = useState<string>("round-of-32");
   const [hoveredTeam, setHoveredTeam] = useState<string | null>(null);
 
 
@@ -72,25 +71,10 @@ export default function Bracket({ fixtures, teamIsoCodes, onShowDetails }: Brack
   };
 
 
-  const stageTitles: Record<string, string> = {
-    "round-of-32": "Dezesseis-avos (1/16)",
-    "round-of-16": "Oitavas de Final (1/8)",
-    "quarter-finals": "Quartas de Final (1/4)",
-    "semi-finals": "Semifinais",
-    "final-stages": "Final e 3º Lugar"
-  };
 
 
-  const hasPendingGroupMatches = fixtures.some(
-    (f) => f.stage === "group-stage" && (f.homeScore === null || f.awayScore === null)
-  );
 
 
-  const roundOf32 = fixtures.filter((f) => f.stage === "round-of-32");
-  const roundOf16 = fixtures.filter((f) => f.stage === "round-of-16");
-  const quarters = fixtures.filter((f) => f.stage === "quarter-finals");
-  const semis = fixtures.filter((f) => f.stage === "semi-finals");
-  const finals = fixtures.filter((f) => f.stage === "final" || f.stage === "third-place").sort((a, b) => b.matchNumber - a.matchNumber);
 
 
   const roundOf32LeftNumbers = [76, 78, 79, 80, 86, 88, 85, 87];
@@ -358,22 +342,7 @@ export default function Bracket({ fixtures, teamIsoCodes, onShowDetails }: Brack
     );
   };
 
-  const getActiveMobileFixtures = () => {
-    switch (activeMobileRound) {
-      case "round-of-32":
-        return roundOf32;
-      case "round-of-16":
-        return roundOf16;
-      case "quarter-finals":
-        return quarters;
-      case "semi-finals":
-        return semis;
-      case "final-stages":
-        return finals;
-      default:
-        return [];
-    }
-  };
+
 
   return (
     <div className="w-full">

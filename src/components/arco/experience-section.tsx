@@ -50,7 +50,7 @@ export function ArcoExperienceSection() {
             mais previsivel.
           </p>
           <div className="mt-10 grid gap-4">
-            {journey.map(({ icon: Icon, title, text }) => (
+            {journey.map(({ title, text }) => (
               <article
                 key={title}
                 className="rounded-lg p-5"

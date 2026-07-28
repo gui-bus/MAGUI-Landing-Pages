@@ -186,9 +186,9 @@ export const resolvePlaceholder = (teamName: string): string => {
       } else if (match.awayScore > match.homeScore) {
         return resolvePlaceholder(match.awayTeam);
       } else {
-        const customWinner = (match as any).winner || (match as any).vencedor;
+        const customWinner = (match as Record<string, unknown>).winner || (match as Record<string, unknown>).vencedor;
         if (customWinner) {
-          return resolvePlaceholder(customWinner);
+          return resolvePlaceholder(customWinner as string);
         }
       }
     }
