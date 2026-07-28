@@ -3390,8 +3390,28 @@
       "stadium": "Hard Rock Stadium",
       "hostCity": "miami",
       "matchUrl": "https://www.youtube.com/@CazeTV",
-      "homeScore": null,
-      "awayScore": null
+      "homeScore": 1,
+      "awayScore": 2,
+      "events": [
+        {
+          "tipo": "gol",
+          "minuto": "36'",
+          "autor": "Andreas SCHJELDERUP",
+          "time": "casa"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "45'+2'",
+          "autor": "Jude BELLINGHAM",
+          "time": "fora"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "93'",
+          "autor": "Jude BELLINGHAM",
+          "time": "fora"
+        }
+      ]
     },
     {
       "matchNumber": 100,
@@ -3404,8 +3424,40 @@
       "stadium": "Arrowhead Stadium",
       "hostCity": "kansas-city",
       "matchUrl": "https://www.youtube.com/@CazeTV",
-      "homeScore": null,
-      "awayScore": null
+      "homeScore": 3,
+      "awayScore": 1,
+      "events": [
+        {
+          "tipo": "gol",
+          "minuto": "10'",
+          "autor": "Alexis MAC ALLISTER",
+          "time": "casa"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "67'",
+          "autor": "Dan NDOYE",
+          "time": "fora"
+        },
+        {
+          "tipo": "cartao_vermelho",
+          "minuto": "72'",
+          "autor": "Breel EMBOLO",
+          "time": "fora"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "112'",
+          "autor": "Julian ALVAREZ",
+          "time": "casa"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "120'+1'",
+          "autor": "Lautaro MARTINEZ",
+          "time": "casa"
+        }
+      ]
     },
     {
       "matchNumber": 101,
@@ -3418,8 +3470,22 @@
       "stadium": "AT&T Stadium",
       "hostCity": "dallas",
       "matchUrl": "https://www.youtube.com/@CazeTV",
-      "homeScore": null,
-      "awayScore": null
+      "homeScore": 0,
+      "awayScore": 2,
+      "events": [
+        {
+          "tipo": "gol",
+          "minuto": "22'",
+          "autor": "Mikel OYARZABAL",
+          "time": "fora"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "58'",
+          "autor": "Pedro PORRO",
+          "time": "fora"
+        }
+      ]
     },
     {
       "matchNumber": 102,
@@ -3427,13 +3493,33 @@
       "kickoffUtc": "2026-07-15T19:00:00Z",
       "stage": "semi-finals",
       "group": null,
-      "homeTeam": "Vencedor Jogo 99",
-      "awayTeam": "Vencedor Jogo 100",
+      "homeTeam": "Inglaterra",
+      "awayTeam": "Argentina",
       "stadium": "Mercedes-Benz Stadium",
       "hostCity": "atlanta",
       "matchUrl": "https://www.youtube.com/@CazeTV",
-      "homeScore": null,
-      "awayScore": null
+      "homeScore": 1,
+      "awayScore": 2,
+      "events": [
+        {
+          "tipo": "gol",
+          "minuto": "55'",
+          "autor": "Anthony GORDON",
+          "time": "casa"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "85'",
+          "autor": "Enzo FERNANDEZ",
+          "time": "fora"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "90'+2'",
+          "autor": "Lautaro MARTINEZ",
+          "time": "fora"
+        }
+      ]
     },
     {
       "matchNumber": 103,
@@ -3441,13 +3527,75 @@
       "kickoffUtc": "2026-07-18T21:00:00Z",
       "stage": "third-place",
       "group": null,
-      "homeTeam": "Perdedor Jogo 101",
-      "awayTeam": "Perdedor Jogo 102",
+      "homeTeam": "França",
+      "awayTeam": "Inglaterra",
       "stadium": "Hard Rock Stadium",
       "hostCity": "miami",
       "matchUrl": "https://www.youtube.com/@CazeTV",
-      "homeScore": null,
-      "awayScore": null
+      "homeScore": 4,
+      "awayScore": 6,
+      "events": [
+        {
+          "tipo": "gol",
+          "minuto": "3'",
+          "autor": "Declan RICE",
+          "time": "fora"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "18'",
+          "autor": "Ezri KONSA",
+          "time": "fora"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "37'",
+          "autor": "Bukayo SAKA",
+          "time": "fora"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "45'+1'",
+          "autor": "Bukayo SAKA",
+          "time": "fora"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "48'",
+          "autor": "Kylian MBAPPE",
+          "time": "casa"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "54'",
+          "autor": "Bradley BARCOLA",
+          "time": "casa"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "66'",
+          "autor": "Kylian MBAPPE",
+          "time": "casa"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "87' (J)",
+          "autor": "Bukayo SAKA",
+          "time": "fora"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "90'+6'",
+          "autor": "Ousmane DEMBELE",
+          "time": "casa"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "90'+8'",
+          "autor": "Jude BELLINGHAM",
+          "time": "fora"
+        }
+      ]
     },
     {
       "matchNumber": 104,
@@ -3455,13 +3603,27 @@
       "kickoffUtc": "2026-07-19T19:00:00Z",
       "stage": "final",
       "group": null,
-      "homeTeam": "Vencedor Jogo 101",
-      "awayTeam": "Vencedor Jogo 102",
+      "homeTeam": "Espanha",
+      "awayTeam": "Argentina",
       "stadium": "MetLife Stadium",
       "hostCity": "new-york",
       "matchUrl": "https://www.youtube.com/@CazeTV",
-      "homeScore": null,
-      "awayScore": null
+      "homeScore": 1,
+      "awayScore": 0,
+      "events": [
+        {
+          "tipo": "cartao_vermelho",
+          "minuto": "90'+3'",
+          "autor": "Enzo FERNANDEZ",
+          "time": "fora"
+        },
+        {
+          "tipo": "gol",
+          "minuto": "106'",
+          "autor": "Ferran TORRES",
+          "time": "casa"
+        }
+      ]
     }
   ]
 }
