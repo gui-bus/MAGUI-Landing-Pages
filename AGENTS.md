@@ -22,6 +22,9 @@ When the user asks to replace, retheme, or transform an existing landing page in
 
 ## Portfolio project standards
 
+- Every project must have its own logo assets, with versions appropriate for light and dark backgrounds.
+- Every project must have a `public/images/<project>/project-cover.webp` combining a project photograph with the project logo centered over it, following the ARCO cover pattern.
+
 - Use `Link` from `next/link` for every navigation element and CTA link, including internal anchors, external URLs, and WhatsApp links. Do not render raw `<a>` tags in project pages or components.
 - Use `Image` from `next/image` for image assets. Do not render raw `<img>` tags. Provide useful `alt`, `sizes`, and stable dimensions or `fill` with a constrained parent.
 - Every project page must have SEO metadata through `generateMetadata` or the shared project metadata flow. Titles should follow `MAGUI.studio | <Project Name>`, and descriptions should use the project-specific registry data.
