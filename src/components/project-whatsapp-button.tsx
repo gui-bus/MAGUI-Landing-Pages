@@ -1,4 +1,6 @@
 import { WhatsappButton } from "@/components/whatsapp-button";
+import { lucasWhatsappMessage, lucasWhatsappNumber } from "@/components/lucas-martins/data";
+import { helenaWhatsappMessage, helenaWhatsappNumber } from "@/components/helena-duarte/data";
 import { arcoWhatsappMessage, arcoWhatsappNumber } from "@/components/arco/data";
 import { bitesWhatsapp } from "@/components/bites/data";
 import {
@@ -44,6 +46,14 @@ function parseWhatsappHref(href: string): ProjectWhatsappConfig {
 }
 
 const projectWhatsappConfig: Record<string, ProjectWhatsappConfig> = {
+  "lucas-martins": {
+    phoneNumber: lucasWhatsappNumber,
+    message: lucasWhatsappMessage,
+  },
+  "helena-duarte": {
+    phoneNumber: helenaWhatsappNumber,
+    message: helenaWhatsappMessage,
+  },
   "atlas-living": {
     phoneNumber: defaultPhoneNumber,
     message:

@@ -1,4 +1,6 @@
 import type { ComponentType } from "react";
+import LucasMartinsLanding from "@/components/sections/lucas-martins";
+import HelenaDuarteLanding from "@/components/sections/helena-duarte";
 import Landing02NachoLibre from "@/components/sections/nacho-libre";
 import Landing03CosmeticoEssencial from "@/components/sections/vitta";
 import Landing05Pulse from "@/components/sections/pulse";
@@ -41,6 +43,38 @@ export type SectionEntry = {
 };
 
 export const sections: SectionEntry[] = [
+  {
+    index: "23",
+    slug: "lucas-martins",
+    title: "Lucas Martins",
+    description: "Corretor especializado no primeiro imóvel em Curitiba e região, com orientação próxima e um caminho explicado do começo às chaves.",
+    category: "Landing Pages",
+    cardImage: "/images/lucas-martins/project-cover.webp",
+    industry: "Imobiliário",
+    projectType: "Especialista no primeiro imóvel",
+    seoTitle: "MAGUI.studio | Lucas Martins",
+    seoDescription: "Lucas Martins: seu parceiro na compra do primeiro imóvel em Curitiba e região, com opções de apartamentos, orientação sobre o Minha Casa, Minha Vida e atendimento pessoal.",
+    goal: "Aproximar a conquista do primeiro imóvel com informação clara, planejamento e atendimento acolhedor.",
+    tags: ["Primeiro imóvel", "Minha Casa, Minha Vida", "Planejamento"],
+    visible: true,
+    component: LucasMartinsLanding,
+  },
+  {
+    index: "22",
+    slug: "helena-duarte",
+    title: "Helena Duarte",
+    description: "Curadoria imobiliária em Curitiba, com seleção de imóveis, atendimento pessoal e um olhar atento para cada novo começo.",
+    category: "Landing Pages",
+    cardImage: "/images/helena-duarte/project-cover.webp",
+    industry: "Imobiliário",
+    projectType: "Corretora de imóveis",
+    seoTitle: "MAGUI.studio | Helena Duarte",
+    seoDescription: "Helena Duarte: curadoria imobiliária em Curitiba com 14 anos de experiência, seleção de casas e apartamentos, imóveis na planta e atendimento personalizado.",
+    goal: "Transformar a busca por um imóvel em uma experiência de curadoria, confiança e contato personalizado.",
+    tags: ["Curadoria imobiliária", "Imóveis", "Atendimento pessoal"],
+    visible: true,
+    component: HelenaDuarteLanding,
+  },
   {
     index: "01",
     slug: "nacho-libre",
