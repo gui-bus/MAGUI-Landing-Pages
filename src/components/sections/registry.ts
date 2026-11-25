@@ -1,5 +1,6 @@
 import type { ComponentType } from "react";
 import lucasMartinsCover from "../../../public/images/lucas-martins/project-cover.webp";
+import helenaDuarteCover from "../../../public/images/helena-duarte/project-cover.webp";
 import LucasMartinsLanding from "@/components/sections/lucas-martins";
 import HelenaDuarteLanding from "@/components/sections/helena-duarte";
 import Landing02NachoLibre from "@/components/sections/nacho-libre";
@@ -66,7 +67,7 @@ export const sections: SectionEntry[] = [
     title: "Helena Duarte",
     description: "Curadoria imobiliária em Curitiba, com seleção de imóveis, atendimento pessoal e um olhar atento para cada novo começo.",
     category: "Landing Pages",
-    cardImage: "/images/helena-duarte/project-cover.webp",
+    cardImage: helenaDuarteCover.src,
     industry: "Imobiliário",
     projectType: "Corretora de imóveis",
     seoTitle: "MAGUI.studio | Helena Duarte",
@@ -130,7 +131,7 @@ export const sections: SectionEntry[] = [
       "Landing page da Pulse para marca fitness premium, unindo tecnologia, performance, estilo e visual editorial voltado à conversão.",
     goal: "Apresentar coleções, tecnologia têxtil e compra assistida com visual editorial.",
     tags: ["Lookbook", "E-commerce", "Performance"],
-    visible: true,
+    visible: false,
     component: Landing05Pulse,
   },
   {
@@ -233,7 +234,7 @@ export const sections: SectionEntry[] = [
     slug: "powervet",
     title: "POWERVET",
     description:
-      "Clínica veterinária premium especializada em animais silvestres e exóticos.",
+      "Uma experiência digital que traduz o cuidado especializado com animais silvestres e exóticos. A identidade visual da POWERVET aproxima os tutores da equipe, apresenta a estrutura clínica e facilita o contato para agendamentos.",
     category: "Landing Pages",
     cardImage: "/images/powervet/project-cover.webp",
     industry: "Saúde",
@@ -270,15 +271,15 @@ export const sections: SectionEntry[] = [
     aliases: ["aura-estetica", "landing-07-banco-privado"],
     title: "ARCO",
     description:
-      "Clinica odontologica moderna com diagnostico digital, cuidado humano e tratamentos personalizados.",
+      "Tecnologia e acolhimento se encontram em uma experiência digital pensada para a ARCO. A página apresenta os tratamentos com clareza, valoriza a equipe e o espaço da clínica e aproxima o paciente do primeiro agendamento.",
     category: "Landing Pages",
     cardImage: "/images/arco/project-cover.webp",
     industry: "Saúde",
-    projectType: "Clinica odontologica",
+    projectType: "Clínica odontológica",
     seoTitle: "ARCO | Clínica odontológica moderna | MAGUI.studio",
     seoDescription:
       "Landing page da ARCO para clínica odontológica, com diagnóstico digital, cuidado humano e tratamentos personalizados para gerar agendamentos.",
-    goal: "Comunicar cuidado humano, tecnologia e tratamentos odontologicos para gerar agendamentos.",
+    goal: "Comunicar cuidado humano, tecnologia e tratamentos odontológicos para gerar agendamentos.",
     tags: ["Odontologia", "Sorriso", "Agendamento"],
     visible: true,
     component: ArcoLanding,
@@ -387,7 +388,7 @@ export const sections: SectionEntry[] = [
     seoDescription: "Landing page da CazéTV com cronograma da Copa do Mundo 2026, transmissões esportivas ao vivo e entretenimento digital para engajar fãs.",
     goal: "Engajar fãs com transmissões esportivas ao vivo e entretenimento.",
     tags: ["Streaming", "Esportes", "Entretenimento"],
-    visible: true,
+    visible: false,
     component: CazeTVLanding,
   },
   {

@@ -6,7 +6,6 @@ import { ArrowLeft, ArrowRight, X } from "@phosphor-icons/react/dist/ssr";
 import { ProjectWhatsappButton } from "@/components/project-whatsapp-button";
 import {
   sectionMap,
-  sections,
   visibleSections,
 } from "@/components/sections/registry";
 import {
@@ -22,7 +21,7 @@ interface PageProps {
 }
 
 export function generateStaticParams() {
-  return sections.map((section) => ({ slug: section.slug }));
+  return visibleSections.map((section) => ({ slug: section.slug }));
 }
 
 export async function generateMetadata(
@@ -32,7 +31,7 @@ export async function generateMetadata(
   const entry = sectionMap[slug];
   const baseUrl = await getRequestSiteUrl();
 
-  if (!entry) {
+  if (!entry || !entry.visible) {
     return {
       title: "MAGUI.studio | Projeto não encontrado",
     };
@@ -46,7 +45,7 @@ export default async function ProjectPage(props: PageProps) {
   const entry = sectionMap[slug];
   const baseUrl = await getRequestSiteUrl();
 
-  if (!entry) {
+  if (!entry || !entry.visible) {
     notFound();
   }
 
