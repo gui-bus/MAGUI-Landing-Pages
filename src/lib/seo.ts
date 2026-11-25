@@ -6,14 +6,17 @@ import type { SectionEntry } from "@/components/sections/registry";
 export const siteConfig = {
   name: "Portfólio MAGUI.studio",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://portfolio.magui.studio",
-  title: "MAGUI.studio | Portfólio de landing pages premium",
+  title: "MAGUI.studio | Landing pages para o mercado imobiliário",
   description:
-    "Portfólio da MAGUI.studio com landing pages premium, direção visual autoral, design responsivo e desenvolvimento focado em conversão.",
+    "Landing pages de alto padrão para imobiliárias, incorporadoras e corretores. Conheça os projetos da MAGUI.studio para o mercado imobiliário e outros negócios.",
   ogImage: "/utils/og-image.webp",
   locale: "pt_BR",
   keywords: [
     "landing page",
     "landing pages premium",
+    "landing pages imobiliárias",
+    "sites para imobiliárias",
+    "landing pages para lançamentos imobiliários",
     "design responsivo",
     "desenvolvimento web",
     "portfólio de landing pages",
