@@ -21,7 +21,14 @@ export function HomeHeader() {
       <nav aria-label="Navegação principal">
         <Link href="#destaques">Destaques</Link>
         <Link href="#projetos">Projetos</Link>
-        <Link className="studio-contact-link" href="#contato">Vamos conversar</Link>
+        <Link
+          className="studio-contact-link"
+          href={`https://wa.me/5512981847553?text=${encodeURIComponent("Olá! Conheci o portfólio da MAGUI.studio e gostaria de conversar sobre meu projeto.")}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Vamos conversar
+        </Link>
       </nav>
     </header>
   );
