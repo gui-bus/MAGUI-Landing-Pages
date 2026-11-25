@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { Plus } from "@phosphor-icons/react";
+import { ArrowDownRight, Plus } from "@phosphor-icons/react";
+import Link from "next/link";
 import s from "./page.module.css";
 
 const questions = [
@@ -14,10 +15,73 @@ const questions = [
 ];
 
 export function HelenaFaqSection() {
-  const [active, setActive] = useState<number | null>(null);
+  const [active, setActive] = useState<number | null>(0);
   const reducedMotion = useReducedMotion();
-  return <section className={`${s.section} ${s.faq}`}><div><p className={s.eyebrow}>CONVERSA ABERTA</p><h2>Antes de dar{" "}<br />o próximo <em>passo.</em></h2></div><div className={s.faqList}>{questions.map(([question, answer], index) => <div className={s.faqItem} key={question}>
-    <h3><button type="button" id={`helena-question-${index}`} aria-expanded={active === index} aria-controls={`helena-answer-${index}`} onClick={() => setActive(active === index ? null : index)}><span>{question}</span><Plus size={21} className={active === index ? s.faqIconOpen : ""} /></button></h3>
-    <AnimatePresence initial={false}>{active === index && <motion.div key={index} id={`helena-answer-${index}`} role="region" aria-labelledby={`helena-question-${index}`} initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ height: { duration: reducedMotion ? 0 : .35, ease: [.22, 1, .36, 1] }, opacity: { duration: reducedMotion ? 0 : .22 } }} className={s.faqAnswer}><p>{answer}</p></motion.div>}</AnimatePresence>
-  </div>)}</div></section>;
+
+  return (
+    <section className={`${s.section} ${s.faqEditorial}`}>
+      <div className={s.faqIntro} data-helena-reveal>
+        <p className={s.eyebrow}>CONVERSA ABERTA</p>
+        <h2>
+          Antes de dar <br />o próximo <em>passo.</em>
+        </h2>
+        <p className={s.faqLead}>
+          Respostas diretas sobre como funciona a curadoria, as visitas e o
+          acompanhamento em cada etapa.
+        </p>
+        <Link href="#contato" className={s.faqJump}>
+          <span>Tem outra pergunta? Fale comigo</span>
+          <ArrowDownRight size={17} />
+        </Link>
+      </div>
+
+      <div className={s.faqEditorialList}>
+        {questions.map(([question, answer], index) => {
+          const isOpen = active === index;
+          return (
+            <div
+              className={`${s.faqEditorialItem} ${isOpen ? s.faqEditorialItemOpen : ""}`}
+              key={question}
+            >
+              <h3>
+                <button
+                  type="button"
+                  id={`helena-question-${index}`}
+                  aria-expanded={isOpen}
+                  aria-controls={`helena-answer-${index}`}
+                  onClick={() => setActive(isOpen ? null : index)}
+                >
+                  <span className={s.faqNumber}>0{index + 1}</span>
+                  <span className={s.faqQuestionText}>{question}</span>
+                  <span className={s.faqPlusWrap} aria-hidden="true">
+                    <Plus size={16} className={isOpen ? s.faqIconOpen : ""} />
+                  </span>
+                </button>
+              </h3>
+              <AnimatePresence initial={false}>
+                {isOpen && (
+                  <motion.div
+                    key={index}
+                    id={`helena-answer-${index}`}
+                    role="region"
+                    aria-labelledby={`helena-question-${index}`}
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{
+                      height: { duration: reducedMotion ? 0 : 0.35, ease: [0.22, 1, 0.36, 1] },
+                      opacity: { duration: reducedMotion ? 0 : 0.22 },
+                    }}
+                    className={s.faqEditorialAnswer}
+                  >
+                    <p>{answer}</p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
 }

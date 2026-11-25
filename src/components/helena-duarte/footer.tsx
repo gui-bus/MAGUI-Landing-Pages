@@ -3,13 +3,15 @@ import Link from "next/link";
 import { ScrollTopLink } from "@/components/scroll-top-link";
 import { helenaNav, helenaWhatsappHref } from "./data";
 import { AmbientIcon } from "./ambient-icon";
+import helenaWordmark from "../../../public/images/helena-duarte/wordmark-white.webp";
+import helenaIcon from "../../../public/images/helena-duarte/brand-icon-white.webp";
 import s from "./page.module.css";
 
 export function HelenaFooter() {
   return (
     <footer id="rodape" className={s.footer}>
       <AmbientIcon kind="plant" className={s.footerAmbient} />
-      <Image className={s.footerMonogram} src="/images/helena-duarte/monogram-white.svg" alt="" width={150} height={120} aria-hidden="true" />
+      <Image className={s.footerMonogram} src={helenaIcon} alt="" sizes="(max-width: 540px) 500px, 730px" aria-hidden="true" />
       <div className={s.footerInvitation} data-helena-reveal>
         <div>
           <p className={s.eyebrow}>BONS ENDEREÇOS. GRANDES HISTÓRIAS.</p>
@@ -22,7 +24,7 @@ export function HelenaFooter() {
         </Link>
       </div>
       <div className={s.footerDirectory} data-helena-reveal>
-        <div className={s.footerBrandBlock}><Link href="#inicio" aria-label="Helena Duarte, início"><Image src="/images/helena-duarte/logo-white.webp" alt="Helena Duarte — Curadoria Imobiliária" width={580} height={160} sizes="(max-width: 540px) 245px, 290px" /></Link><p>Arquitetura, afeto e novos começos.{" "}<br />Curadoria imobiliária em Curitiba.</p></div>
+        <div className={s.footerBrandBlock}><Link href="#inicio" aria-label="Helena Duarte, início"><Image src={helenaWordmark} alt="Helena Duarte" width={1348} height={661} sizes="(max-width: 540px) 180px, 210px" /></Link><p>Arquitetura, afeto e novos começos.{" "}<br />Curadoria imobiliária em Curitiba.</p></div>
         <nav aria-label="Navegação do rodapé"><p className={s.footerLabel}>Explore</p>{helenaNav.map(item => <Link key={item.href} href={item.href}>{item.label}</Link>)}</nav>
         <div className={s.footerContact}><p className={s.footerLabel}>Mais perto</p><Link href={helenaWhatsappHref()} target="_blank" rel="noopener noreferrer">Converse comigo no WhatsApp</Link><span>Curitiba e região metropolitana</span><span>Atendimento com hora marcada</span><Link href="#contato" className={s.footerAppointment}>Encontre o seu lugar</Link></div>
       </div>
