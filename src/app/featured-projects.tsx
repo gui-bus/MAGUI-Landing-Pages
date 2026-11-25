@@ -10,6 +10,7 @@ import type { PortfolioProject } from "@/app/portfolio-projects";
 export type FeaturedProject = PortfolioProject & { href?: string; client?: string };
 
 const projectLogos: Record<string, string> = {
+  "viverde-itaipava": "/images/viverde/logo-dark.svg",
   powervet: "/images/powervet/logo-dark.webp",
   "arco-odontologia": "/images/arco/logo-blue.webp",
 };

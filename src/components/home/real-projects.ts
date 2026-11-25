@@ -8,7 +8,7 @@ export const realProjects: FeaturedProject[] = [
     "image": "/utils/home-projects/parque-una.webp?v=50160c2811",
     "href": "https://parqueuna.piramideimoveissjc.com.br/pt",
     "industry": "Imobiliário",
-    "projectType": "Plataforma imobiliária",
+    "projectType": "Empreendimento urbanístico",
     "index": "",
     "tags": [
       "Urbanismo",
@@ -29,6 +29,22 @@ export const realProjects: FeaturedProject[] = [
       "Conteúdo & SEO",
       "Portal Imobiliário",
       "CMS Integrado"
+    ]
+  },
+  {
+    "slug": "viverde-itaipava",
+    "title": "Viverde Itaipava",
+    "description": "Uma experiência digital criada para o Viverde Itaipava Résidences, apresentando casas de 3 e 4 suítes na serra com piscina aquecida, varanda gourmet e jardim privativo. A página combina direção visual sofisticada, galeria imersiva e conexão direta para atendimento.",
+    "goal": "Traduzir o estilo de vida leve e exclusivo de Itaipava em uma landing page de alto padrão focada em posicionamento e captação de interessados.",
+    "image": "/utils/home-projects/viverde.webp",
+    "href": "https://viverde.magui.studio/",
+    "industry": "Imobiliário",
+    "projectType": "Condomínio de alto padrão",
+    "index": "",
+    "tags": [
+      "Alto Padrão",
+      "Residencial",
+      "Lançamento Imobiliário"
     ]
   }
 ];
