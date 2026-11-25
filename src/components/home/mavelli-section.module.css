@@ -1,0 +1,9 @@
+.section { padding:16px 0 0; background:#fff; }
+.banner { display:block; width:100%; background:#d1c9be; }
+.artwork { display:block; width:100%; height:auto; aspect-ratio:3/1; object-fit:contain; }
+.banner:focus-visible { outline:2px solid #fd4f28; outline-offset:5px; }
+@media(max-width:760px) {
+  .section { padding:12px 0 0; }
+  .artwork { aspect-ratio:2/3; }
+}
+

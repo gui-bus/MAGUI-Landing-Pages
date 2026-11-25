@@ -1,0 +1,94 @@
+{
+  "lucas-martins": {
+    "directory": "lucas-martins",
+    "photo": "interior-editorial.webp",
+    "logo": "wordmark-stacked-light.webp"
+  },
+  "helena-duarte": {
+    "directory": "helena-duarte",
+    "photo": "casa.webp",
+    "logo": "wordmark-white.webp"
+  },
+  "nacho-libre": {
+    "directory": "nacho-libre",
+    "photo": "hero.webp",
+    "logo": "logo-white.webp"
+  },
+  "vitta": {
+    "directory": "vitta",
+    "photo": "cover.webp",
+    "logo": null
+  },
+  "pulse": {
+    "directory": "pulse",
+    "photo": "hero.webp",
+    "logo": "logo.webp"
+  },
+  "kroma": {
+    "directory": "kroma",
+    "photo": "paineis_sol.webp",
+    "logo": null
+  },
+  "la-creme": {
+    "directory": "lacreme",
+    "photo": "hero.webp",
+    "logo": null
+  },
+  "shinobi": {
+    "directory": "shinobi",
+    "photo": "samurai.webp",
+    "logo": "logo.webp"
+  },
+  "bites": {
+    "directory": "bites",
+    "photo": "hero.webp",
+    "logo": "logo.webp"
+  },
+  "sayeg-beauty-studio": {
+    "directory": "sayeg",
+    "photo": "beatriz-sayeg-profile.webp",
+    "logo": "logo-white.webp"
+  },
+  "powervet": {
+    "directory": "powervet",
+    "photo": "hero.webp",
+    "logo": "logo-light.webp",
+    "position": "east"
+  },
+  "flow": {
+    "directory": "flow",
+    "photo": "interior-da-loja.webp",
+    "logo": "logo-light.webp"
+  },
+  "arco-odontologia": {
+    "directory": "arco",
+    "photo": "hero-section-mulher-sorrindo.webp",
+    "logo": "logo-white.webp",
+    "position": "west"
+  },
+  "dragon-tattoo": {
+    "directory": "dragon-tattoo",
+    "photo": "hero-image.webp",
+    "logo": "logo-white.webp"
+  },
+  "haven": {
+    "directory": "haven",
+    "photo": "imagem-hero-familia-feliz.webp",
+    "logo": "logo-branco.webp"
+  },
+  "step": {
+    "directory": "step",
+    "photo": "hero-par-de-tenis.webp",
+    "logo": "logo-white.webp"
+  },
+  "flora": {
+    "directory": "flora",
+    "photo": "hero-image-interior-da-loja.webp",
+    "logo": "logo-white.webp"
+  },
+  "cazetv": {
+    "directory": "cazetv",
+    "photo": "se-tem-copa-esquece-e-na-caze-tv.png",
+    "logo": "logo-caze-tv-texto-branco.webp"
+  }
+}

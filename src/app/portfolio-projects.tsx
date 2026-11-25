@@ -1,13 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import {
-  ArrowUpRight,
-  MagnifyingGlass,
-} from "@phosphor-icons/react";
-import { useEffect, useMemo, useState } from "react";
+import { ProjectCover } from "@/components/home/project-cover";
+import { ArrowLeft, ArrowRight } from "@phosphor-icons/react";
+import { useCallback, useEffect, useRef, type PointerEvent } from "react";
 
 export type PortfolioProject = {
   description: string;
@@ -26,202 +22,168 @@ type PortfolioProjectsProps = {
 };
 
 export function PortfolioProjects({ projects }: PortfolioProjectsProps) {
-  const pathname = usePathname();
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const [query, setQuery] = useState(() => searchParams.get("q") ?? "");
-  const [activeIndustry, setActiveIndustry] = useState(
-    () => searchParams.get("industry") ?? "Todos",
-  );
+  const carousel = useRef<HTMLDivElement>(null);
+  const motionFrame = useRef<number | null>(null);
+  const drag = useRef({ pointerId: -1, startX: 0, scrollLeft: 0, moved: false, lastTime: 0, lastScroll: 0, velocity: 0 });
 
-  const industries = useMemo(
-    () => [
-      "Todos",
-      ...Array.from(new Set(projects.map((project) => project.industry))),
-    ],
-    [projects],
-  );
-  const normalizedActiveIndustry = industries.includes(activeIndustry)
-    ? activeIndustry
-    : "Todos";
+  const stopMomentum = useCallback(() => {
+    if (motionFrame.current !== null) cancelAnimationFrame(motionFrame.current);
+    motionFrame.current = null;
+    if (carousel.current) carousel.current.dataset.momentum = "false";
+  }, []);
 
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setQuery(searchParams.get("q") ?? "");
-    setActiveIndustry(searchParams.get("industry") ?? "Todos");
-  }, [searchParams]);
+  useEffect(() => stopMomentum, [stopMomentum]);
 
-  function updateUrl(nextQuery: string, nextIndustry: string) {
-    const params = new URLSearchParams(searchParams.toString());
-    const trimmedQuery = nextQuery.trim();
-
-    if (trimmedQuery) {
-      params.set("q", nextQuery);
-    } else {
-      params.delete("q");
+  function glide(track: HTMLDivElement, velocity: number) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || Math.abs(velocity) < 0.08) return;
+    const maximum = track.scrollWidth - track.clientWidth;
+    const start = track.scrollLeft;
+    const projected = Math.max(0, Math.min(maximum, start + velocity * 320));
+    const origin = track.getBoundingClientRect().left;
+    const stops = [0, maximum, ...Array.from(track.querySelectorAll<HTMLElement>(".studio-project"), (card) =>
+      Math.max(0, Math.min(maximum, card.getBoundingClientRect().left - origin + start)))];
+    const target = stops.reduce((closest, value) => Math.abs(value - projected) < Math.abs(closest - projected) ? value : closest);
+    const began = performance.now();
+    const omega = 0.009;
+    const displacement = start - target;
+    const springVelocity = velocity + omega * displacement;
+    track.dataset.momentum = "true";
+    function animate(now: number) {
+      const elapsed = now - began;
+      const decay = Math.exp(-omega * elapsed);
+      const position = target + (displacement + springVelocity * elapsed) * decay;
+      track.scrollLeft = Math.max(0, Math.min(maximum, position));
+      if (elapsed > 1800 || (elapsed > 250 && Math.abs(position - target) < 0.4)) {
+        track.scrollLeft = target;
+        track.dataset.momentum = "false";
+        motionFrame.current = null;
+        return;
+      }
+      motionFrame.current = requestAnimationFrame(animate);
     }
+    motionFrame.current = requestAnimationFrame(animate);
+  }
 
-    if (nextIndustry !== "Todos") {
-      params.set("industry", nextIndustry);
-    } else {
-      params.delete("industry");
+  function startDrag(event: PointerEvent<HTMLDivElement>) {
+    stopMomentum();
+    drag.current.moved = false;
+    if (event.pointerType !== "mouse" || event.button !== 0) return;
+    const position = event.currentTarget.scrollLeft;
+    drag.current = { pointerId: event.pointerId, startX: event.clientX, scrollLeft: position, moved: false, lastTime: performance.now(), lastScroll: position, velocity: 0 };
+  }
+
+  function moveDrag(event: PointerEvent<HTMLDivElement>) {
+    const current = drag.current;
+    if (current.pointerId !== event.pointerId) return;
+    const distance = event.clientX - current.startX;
+    if (!current.moved && Math.abs(distance) < 6) return;
+    if (!current.moved) {
+      current.moved = true;
+      event.currentTarget.setPointerCapture(event.pointerId);
+      event.currentTarget.dataset.dragging = "true";
     }
+    event.preventDefault();
+    const track = event.currentTarget;
+    track.scrollLeft = current.scrollLeft - distance;
+    const now = performance.now();
+    const elapsed = now - current.lastTime;
+    if (elapsed > 0) {
+      const speed = (track.scrollLeft - current.lastScroll) / elapsed;
+      current.velocity = Math.max(-4.5, Math.min(4.5, speed * 0.7 + current.velocity * 0.3));
+      current.lastTime = now;
+      current.lastScroll = track.scrollLeft;
+    }
+  }
 
-    const queryString = params.toString();
-    router.replace(queryString ? `${pathname}?${queryString}` : pathname, {
-      scroll: false,
+  function endDrag(event: PointerEvent<HTMLDivElement>) {
+    const current = drag.current;
+    if (current.pointerId !== event.pointerId) return;
+    current.pointerId = -1;
+    const track = event.currentTarget;
+    if (event.type === "pointerup" && current.moved && performance.now() - current.lastTime < 100) glide(track, current.velocity);
+    track.dataset.dragging = "false";
+    if (track.hasPointerCapture(event.pointerId)) track.releasePointerCapture(event.pointerId);
+  }
+
+  function scrollProjects(direction: number) {
+    stopMomentum();
+    const track = carousel.current;
+    if (!track) return;
+    const card = track.querySelector<HTMLElement>(".studio-project");
+    const distance = card ? card.getBoundingClientRect().width + 24 : track.clientWidth * 0.8;
+    track.scrollBy({
+      left: direction * distance,
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
     });
   }
-
-
-  function handleQueryChange(value: string) {
-    setQuery(value);
-    updateUrl(value, normalizedActiveIndustry);
-  }
-
-
-  function handleIndustryChange(industry: string) {
-    setActiveIndustry(industry);
-    updateUrl(query, industry);
-  }
-
-  const filteredProjects = useMemo(() => {
-    const normalizedQuery = query.trim().toLowerCase();
-
-    return projects.filter((project) => {
-      const matchesIndustry =
-        normalizedActiveIndustry === "Todos" ||
-        project.industry === normalizedActiveIndustry;
-      const searchable = [
-        project.title,
-        project.description,
-        project.goal,
-        project.industry,
-        project.projectType,
-        ...project.tags,
-      ]
-        .join(" ")
-        .toLowerCase();
-
-      return (
-        matchesIndustry &&
-        (!normalizedQuery || searchable.includes(normalizedQuery))
-      );
-    });
-  }, [normalizedActiveIndustry, projects, query]);
 
   return (
-    <section id="projetos" className="w-full space-y-12 bg-[#FCFCFC] px-6 md:px-12 lg:px-16">
-      <div className="flex flex-col gap-5 border-b border-black/10 pb-8">
-        <p className="text-xs font-semibold uppercase text-[#0093C8]">
-          Portfolio
+    <section id="projetos" className="studio-archive" aria-labelledby="archive-title">
+      <div className="studio-section-title">
+        <div>
+          <p className="studio-label">Diferentes marcas. A mesma exigência.</p>
+          <h2 id="archive-title">Portfólio selecionado.</h2>
+        </div>
+        <p>
+          {projects.length} projetos para explorar.
+          <br />
+          Landing pages pensadas para cada negócio.
         </p>
-        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <h2 className="text-4xl font-light leading-none text-black md:text-5xl">
-            Projetos selecionados
-          </h2>
-          <p className="text-sm text-neutral-500">
-            {projects.length} projetos para explorar
-          </p>
+      </div>
+
+      <div className="studio-archive-results" aria-live="polite">
+        <span>{projects.length} {projects.length === 1 ? "projeto" : "projetos"}</span>
+        <div className="studio-archive-navigation">
+          <span>Deslize para explorar</span>
+          <button type="button" aria-label="Projetos anteriores" onClick={() => scrollProjects(-1)}>
+            <ArrowLeft size={18} aria-hidden="true" />
+          </button>
+          <button type="button" aria-label="Próximos projetos" onClick={() => scrollProjects(1)}>
+            <ArrowRight size={18} aria-hidden="true" />
+          </button>
         </div>
       </div>
 
-      <div className="w-full flex flex-col gap-6 md:flex-row md:items-center md:justify-between border-b border-black/5 pb-8">
-        <label className="relative block w-full md:max-w-sm">
-          <span className="sr-only">Buscar projetos</span>
-          <MagnifyingGlass
-            size={16}
-            className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-black/40 transition-colors"
-          />
-          <input
-            value={query}
-            onChange={(event) => handleQueryChange(event.target.value)}
-            placeholder="Buscar projetos..."
-            className="h-10 w-full border border-black/10 bg-white pl-9 pr-4 text-xs text-black outline-none transition-all rounded-md focus:border-black focus:ring-4 focus:ring-black/5"
-          />
-        </label>
-
-        <div className="flex flex-wrap items-center gap-1.5">
-          {industries.map((industry) => (
-            <button
-              key={industry}
-              type="button"
-              onClick={() => handleIndustryChange(industry)}
-              className={`h-8 px-3 text-xs font-medium transition-all rounded-md cursor-pointer active:scale-95 ${
-                normalizedActiveIndustry === industry
-                  ? "bg-[#0093C8] text-white shadow-md shadow-[#0093C8]/25"
-                  : "bg-white border border-black/5 text-black/60 hover:border-black/20 hover:text-black"
-              }`}
-            >
-              {industry}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {filteredProjects.length > 0 ? (
-        <div className="w-full grid gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredProjects.map((project) => (
-            <Link
-              key={project.slug}
-              href={`/projetos/${project.slug}`}
-              className="group flex flex-col space-y-3 p-4 rounded-xl border border-transparent bg-transparent hover:bg-white hover:border-black/5 hover:shadow-xl hover:shadow-neutral-100/50 hover:-translate-y-1 transition-all duration-300"
-            >
-              <div className="relative aspect-4/3 w-full overflow-hidden rounded-lg bg-neutral-100">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
-                  priority
-                />
-
-                <span className="absolute right-3 bottom-3 bg-black/70 px-2 py-0.5 text-[10px] font-medium text-white backdrop-blur-xs rounded-sm">
-                  {project.industry}
-                </span>
-              </div>
-
-              <div className="space-y-1">
-                <div className="flex items-center justify-between gap-2">
-                  <h3 className="text-lg font-medium text-black tracking-tight group-hover:text-[#0093C8] transition-colors">
-                    {project.title}
-                  </h3>
-                  <ArrowUpRight
-                    size={14}
-                    className="text-black/40 group-hover:text-[#0093C8] transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 duration-300"
-                  />
-                </div>
-
-                <p className="text-xs font-semibold uppercase tracking-wider text-[#0093C8]">
-                  {project.projectType}
-                </p>
-
-                <p className="text-sm text-neutral-600 line-clamp-2 pt-1 leading-relaxed">
-                  {project.description}
-                </p>
-              </div>
-
-              <div className="flex flex-wrap gap-1 pt-1">
-                {project.tags.slice(0, 3).map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-[11px] text-neutral-400 bg-neutral-100 px-1.5 py-0.5 rounded-xs"
-                  >
-                    #{tag}
-                  </span>
-                ))}
-              </div>
+      <div
+        ref={carousel}
+        id="portfolio-carousel"
+        className="studio-projects"
+        onWheel={stopMomentum}
+        onKeyDown={stopMomentum}
+        onPointerDown={startDrag}
+        onPointerMove={moveDrag}
+        onPointerUp={endDrag}
+        onPointerCancel={endDrag}
+        onLostPointerCapture={endDrag}
+        onPointerLeave={(event) => { if (!drag.current.moved) endDrag(event); }}
+        onDragStart={(event) => event.preventDefault()}
+        onClickCapture={(event) => { if (drag.current.moved && event.detail > 0) { event.preventDefault(); event.stopPropagation(); } }}
+        role="region"
+        aria-label="Carrossel de projetos"
+        tabIndex={0}
+      >
+        {projects.map((project) => (
+          <article className="studio-project" key={project.slug}>
+            <Link href={`/projetos/${project.slug}`} className="studio-project-image" aria-label={`Explorar projeto ${project.title}`}>
+              <ProjectCover slug={project.slug} title={project.title} fallback={project.image} />
             </Link>
-          ))}
-        </div>
-      ) : (
-        <div className="w-full py-16 text-center border border-dashed border-black/10 rounded-lg bg-white">
-          <p className="text-sm font-medium text-black">
-            Nenhum projeto encontrado.
-          </p>
-        </div>
-      )}
+            <div className="studio-project-info">
+              <p className="studio-label">{project.industry}</p>
+              <Link href={`/projetos/${project.slug}`}>
+                <h3>{project.title}</h3>
+              </Link>
+              <p>{project.description}</p>
+              <ul className="studio-project-tags" aria-label="Características do projeto">
+                {project.tags.slice(0, 3).map((tag) => <li key={tag}>{tag}</li>)}
+              </ul>
+              <div>
+                <span>{project.projectType}</span>
+                <Link className="studio-text-link" href={`/projetos/${project.slug}`}>Explorar projeto</Link>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
     </section>
   );
 }

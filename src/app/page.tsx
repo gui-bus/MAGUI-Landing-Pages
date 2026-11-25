@@ -1,14 +1,21 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
+import type { CSSProperties } from "react";
 import { redirect } from "next/navigation";
-import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 import {
   PortfolioProjects,
   type PortfolioProject,
 } from "@/app/portfolio-projects";
+import { realProjects } from "@/components/home/real-projects";
 import { FeaturedProjects } from "@/app/featured-projects";
-import { ScrollTopLink } from "@/components/scroll-top-link";
+import { HomeHeader } from "@/components/home/header";
+import { HeroSection, HeroNote } from "@/components/home/hero-section";
+import { FaqSection } from "@/components/home/faq-section";
+import { SectionDivider } from "@/components/home/section-divider";
+import { HomeFooter } from "@/components/home/footer";
+import { ProcessSection } from "@/components/home/process-section";
+import { MavelliSection } from "@/components/home/mavelli-section";
+import { homeFonts } from "@/components/home/fonts";
+import "@/components/home/home.css";
 import { sectionMap, visibleSections } from "@/components/sections/registry";
 import {
   buildProjectMetadata,
@@ -21,13 +28,6 @@ import {
 interface HomePageProps {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }
-
-const featuredProjectSlugs = new Set([
-  "powervet",
-  "flow",
-  "arco-odontologia",
-  "cazetv",
-]);
 
 function getActiveSlug(
   searchParams: Record<string, string | string[] | undefined>,
@@ -85,167 +85,52 @@ export default async function Home(props: HomePageProps) {
       title: section.title,
     }),
   );
-  const featuredProjects = portfolioProjects.filter((project) =>
-    featuredProjectSlugs.has(project.slug),
-  );
-  const regularProjects = portfolioProjects.filter(
-    (project) => !featuredProjectSlugs.has(project.slug),
-  );
+  const featuredCoverBySlug: Record<string, string> = {
+    powervet: "/utils/home-projects/powervet.webp?v=2e100d3297",
+    "arco-odontologia": "/utils/home-projects/arco.webp?v=ccd88f0b7e",
+  };
+  const featuredProjects = portfolioProjects
+    .filter((project) => project.slug in featuredCoverBySlug)
+    .map((project) => ({
+      ...project,
+      image: featuredCoverBySlug[project.slug] ?? project.image,
+    }));
+
+  const priorityPortfolioOrder = [
+    "lucas-martins",
+    "helena-duarte",
+    "sayeg-beauty-studio",
+    "vitta",
+    "haven",
+    "flora",
+  ];
+  const otherPortfolioProjects = portfolioProjects
+    .filter((project) => !(project.slug in featuredCoverBySlug))
+    .sort((a, b) => {
+      const aIndex = priorityPortfolioOrder.indexOf(a.slug);
+      const bIndex = priorityPortfolioOrder.indexOf(b.slug);
+      if (aIndex !== -1 && bIndex !== -1) return aIndex - bIndex;
+      if (aIndex !== -1) return -1;
+      if (bIndex !== -1) return 1;
+      return 0;
+    });
 
   return (
-    <main className="min-h-screen w-full bg-[#FCFCFC] text-black antialiased selection:bg-black selection:text-white">
-      <script
-        type="application/ld+json"
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(createOrganizationJsonLd(baseUrl)),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(createPortfolioJsonLd(visibleSections, baseUrl)),
-        }}
-      />
-      <section className="w-full overflow-hidden bg-neutral-100">
-        <style>{`
-          @keyframes banner-reveal {
-            0% {
-              opacity: 0;
-              transform: scale(1.05);
-              filter: blur(4px);
-            }
-            100% {
-              opacity: 1;
-              transform: scale(1);
-              filter: blur(0);
-            }
-          }
-        `}</style>
-        <Image
-          src="/utils/page-banner.webp"
-          alt="MAGUI.studio"
-          width={2048}
-          height={854}
-          priority
-          sizes="100vw"
-          className="h-auto w-full block animate-[banner-reveal_1.4s_cubic-bezier(0.16,1,0.3,1)_forwards]"
-        />
-      </section>
-
-      <FeaturedProjects projects={featuredProjects} />
-
-      <PortfolioProjects projects={regularProjects} />
-      <footer className="w-full mt-20 border-t border-black/10 bg-white pt-24 pb-12 px-6 md:px-12 lg:px-16">
-        <div className="space-y-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-            <div className="space-y-4">
-              <span className="text-xs font-mono uppercase tracking-widest text-[#0093C8]">
-                {`// Vamos conversar?`}
-              </span>
-              <h2 className="text-4xl md:text-5xl font-light tracking-tight leading-none">
-                Pronto para transformar sua presença digital?
-              </h2>
-            </div>
-            <div className="lg:pt-6 lg:justify-self-end">
-              <Link
-                href="https://magui.studio/contato"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-4 bg-black text-white px-8 py-4 rounded-full text-sm font-medium transition-transform active:scale-98 hover:bg-[#0093C8] duration-300"
-              >
-                Iniciar um projeto
-                <ArrowUpRight
-                  size={18}
-                  className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
-                />
-              </Link>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 border-t border-black/5">
-            <div className="space-y-3">
-              <p className="text-xs font-mono text-neutral-400 uppercase tracking-wider">
-                Navegação
-              </p>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <Link
-                    href="#projetos"
-                    className="hover:text-[#0093C8] transition-colors"
-                  >
-                    Projetos
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="https://magui.studio"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-[#0093C8] transition-colors"
-                  >
-                    Sobre nós
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div className="space-y-3">
-              <p className="text-xs font-mono text-neutral-400 uppercase tracking-wider">
-                Redes
-              </p>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <Link
-                    href="https://www.instagram.com/_magui.studio"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-[#0093C8] transition-colors"
-                  >
-                    Instagram
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="https://www.linkedin.com/company/magui-studio"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-[#0093C8] transition-colors"
-                  >
-                    LinkedIn
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div className="space-y-3 col-span-2 md:col-span-2 md:justify-self-end text-left md:text-right">
-              <p className="text-xs font-mono text-neutral-400 uppercase tracking-wider">
-                Contato
-              </p>
-              <p className="text-sm">contato@magui.studio</p>
-              <p className="text-xs text-neutral-400 max-w-xs md:ml-auto">
-                Disponível para novos projetos.
-              </p>
-            </div>
-          </div>
-
-          <div className="pt-8 border-t border-black/5 flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center text-[11px] text-neutral-400 font-mono tracking-wider">
-            <p>MAGUI.STUDIO</p>
-            <div className="flex flex-wrap items-center gap-3">
-              <p>
-                © {new Date().getFullYear()} — TODOS OS DIREITOS RESERVADOS.
-              </p>
-              <span aria-hidden="true" className="text-neutral-300">
-                |
-              </span>
-              <ScrollTopLink className="text-neutral-500 transition-colors hover:text-[#0093C8]">
-                Voltar ao topo ↑
-              </ScrollTopLink>
-            </div>
-          </div>
-        </div>
-      </footer>
+    <main id="inicio" className="home-page" style={{ fontFamily: homeFonts.text, "--studio-display": homeFonts.display } as CSSProperties}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(createOrganizationJsonLd(baseUrl)) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(createPortfolioJsonLd(visibleSections, baseUrl)) }} />
+      <div className="studio-intro">
+        <HomeHeader />
+        <HeroSection />
+      </div>
+      <HeroNote />
+      <FeaturedProjects projects={[...realProjects, ...featuredProjects]} />
+      <SectionDivider />
+      <PortfolioProjects projects={otherPortfolioProjects} />
+      <MavelliSection />
+      <ProcessSection />
+      <FaqSection />
+      <HomeFooter />
     </main>
   );
 }
