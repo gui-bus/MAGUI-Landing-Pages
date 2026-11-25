@@ -114,6 +114,10 @@ export function buildDefaultMetadata(baseUrl = siteConfig.url): Metadata {
     alternates: {
       canonical: "/",
     },
+    icons: {
+      icon: [{ url: "/favicon.ico?v=2", sizes: "any" }],
+      shortcut: "/favicon.ico?v=2",
+    },
     robots: {
       index: true,
       follow: true,
@@ -278,6 +282,23 @@ export function createProjectJsonLd(
       ...entry.tags.map(sanitizeText),
     ],
     inLanguage: "pt-BR",
+  };
+}
+
+export function createFaqJsonLd(
+  items: ReadonlyArray<{ question: string; answer: string }>,
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: sanitizeText(item.question),
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: sanitizeText(item.answer),
+      },
+    })),
   };
 }
 

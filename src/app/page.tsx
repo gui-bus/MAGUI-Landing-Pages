@@ -10,6 +10,7 @@ import { FeaturedProjects } from "@/app/featured-projects";
 import { HomeHeader } from "@/components/home/header";
 import { HeroSection, HeroNote } from "@/components/home/hero-section";
 import { FaqSection } from "@/components/home/faq-section";
+import { faqItems } from "@/components/home/faq-items";
 import { SectionDivider } from "@/components/home/section-divider";
 import { HomeFooter } from "@/components/home/footer";
 import { ProcessSection } from "@/components/home/process-section";
@@ -19,6 +20,7 @@ import "@/components/home/home.css";
 import { sectionMap, visibleSections } from "@/components/sections/registry";
 import {
   buildProjectMetadata,
+  createFaqJsonLd,
   createOrganizationJsonLd,
   createPortfolioJsonLd,
   getRequestSiteUrl,
@@ -119,6 +121,7 @@ export default async function Home(props: HomePageProps) {
     <main id="inicio" className="home-page" style={{ fontFamily: homeFonts.text, "--studio-display": homeFonts.display } as CSSProperties}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(createOrganizationJsonLd(baseUrl)) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(createPortfolioJsonLd(visibleSections, baseUrl)) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(createFaqJsonLd(faqItems)) }} />
       <div className="studio-intro">
         <HomeHeader />
         <HeroSection />
