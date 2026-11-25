@@ -4,25 +4,26 @@ import { headers } from "next/headers";
 import type { SectionEntry } from "@/components/sections/registry";
 
 export const siteConfig = {
-  name: "Portfólio MAGUI.studio",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://portfolio.magui.studio",
-  title: "MAGUI.studio | Landing pages para o mercado imobiliário",
+  name: "MAGUI.studio",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://magui.studio",
+  title: "MAGUI.studio | Estúdio digital e design sob medida",
   description:
-    "Landing pages de alto padrão para imobiliárias, incorporadoras e corretores. Conheça os projetos da MAGUI.studio para o mercado imobiliário e outros negócios.",
+    "Estúdio digital especializado em páginas de alto padrão para o mercado imobiliário, clínicas de saúde e marcas que buscam presença digital sob medida.",
   ogImage: "/utils/og-image.webp",
   locale: "pt_BR",
   keywords: [
-    "landing page",
+    "MAGUI.studio",
+    "magui.studio",
+    "estúdio digital",
+    "design sob medida",
     "landing pages premium",
-    "landing pages imobiliárias",
-    "sites para imobiliárias",
-    "landing pages para lançamentos imobiliários",
+    "sites para o mercado imobiliário",
+    "lançamentos imobiliários",
+    "sites para clínicas de saúde",
+    "sites para clínicas odontológicas",
+    "sites para clínicas veterinárias",
     "design responsivo",
     "desenvolvimento web",
-    "portfólio de landing pages",
-    "sites para marcas",
-    "portfolio.magui.studio",
-    "MAGUI.studio",
   ],
 } as const;
 
@@ -134,7 +135,7 @@ export function buildDefaultMetadata(baseUrl = siteConfig.url): Metadata {
       images: [
         {
           url: siteConfig.ogImage,
-          alt: "Preview do Portfólio MAGUI.studio",
+          alt: "MAGUI.studio — Estúdio digital e design sob medida",
         },
       ],
     },
@@ -186,7 +187,7 @@ export function buildProjectMetadata(
       images: [
         {
           url: entry.cardImage ?? siteConfig.ogImage,
-          alt: `${sanitizeText(entry.title)} | Projeto do Portfólio MAGUI.studio`,
+          alt: `${sanitizeText(entry.title)} | Projeto MAGUI.studio`,
         },
       ],
     },

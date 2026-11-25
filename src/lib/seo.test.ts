@@ -86,7 +86,7 @@ describe('SEO & Metadata Utils', () => {
         
       expect(firstImage).toEqual({
         url: mockEntry.cardImage,
-        alt: 'Nacho Libre | Projeto do Portfólio MAGUI.studio',
+        alt: 'Nacho Libre | Projeto MAGUI.studio',
       });
     });
   });
@@ -116,7 +116,7 @@ describe('SEO & Metadata Utils', () => {
       const jsonLd = createBreadcrumbJsonLd(mockEntry, 'https://portfolio.magui.studio');
       expect(jsonLd['@type']).toBe('BreadcrumbList');
       expect(jsonLd.itemListElement).toHaveLength(2);
-      expect(jsonLd.itemListElement[0].name).toContain('Portfólio');
+      expect(jsonLd.itemListElement[0].name).toBe('MAGUI.studio');
       expect(jsonLd.itemListElement[1].name).toBe('Nacho Libre');
     });
   });
