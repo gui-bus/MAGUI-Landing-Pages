@@ -2546,3 +2546,33 @@
   .studio-faq-grid { gap:24px; }
   .studio-faq-lead { margin-top:12px; font-size:13px; }
 }
+
+@media(max-width:760px) {
+  .studio-header nav > a:not(.studio-contact-link) {
+    display:none;
+  }
+  .studio-contact-link {
+    white-space:nowrap;
+  }
+}
+
+@media(max-width:760px) {
+  .studio-intro {
+    min-height:225cqw;
+  }
+  .studio-intro .studio-hero-carousel {
+    min-height:92cqw;
+  }
+  .studio-intro .studio-hero-copy > .studio-text-link {
+    width:100%;
+    justify-content:center;
+    padding:12px 16px;
+  }
+}
+
+@media(max-width:760px) {
+  .studio-archive .studio-project,
+  .studio-archive .studio-project:nth-child(even) {
+    min-height:540px;
+  }
+}
