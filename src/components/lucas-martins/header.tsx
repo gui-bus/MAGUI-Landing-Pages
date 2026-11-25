@@ -4,7 +4,8 @@ import { useEffect, useRef, useState, type MouseEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { HouseLine, List, X } from "@phosphor-icons/react";
+import { ArrowUpRight, List, X } from "@phosphor-icons/react";
+import houseIcon from "../../../public/images/lucas-martins/brand-icon-house.png";
 import { lucasNav } from "./data";
 import s from "./page.module.css";
 
@@ -55,11 +56,11 @@ export function LucasHeader() {
       <div className={`${s.container} ${s.headerInner}`}>
         <Link href="#inicio" aria-label="Lucas Martins, início" className={s.logo}>
           <Image
-            src="/images/lucas-martins/logo-red-dark.webp"
-            alt="Lucas Martins — seu primeiro imóvel"
-            width={600}
-            height={170}
-            sizes="(max-width: 560px) 168px, 196px"
+            src="/images/lucas-martins/wordmark-stacked-light.webp"
+            alt="Lucas Martins"
+            width={1361}
+            height={582}
+            sizes="(max-width: 600px) 96px, 120px"
             preload
           />
         </Link>
@@ -73,7 +74,7 @@ export function LucasHeader() {
         </nav>
 
         <Link href="#contato" className={`${s.button} ${s.headerCta}`}>
-          Fale com o Lucas
+          Vamos conversar <ArrowUpRight size={16} aria-hidden="true" />
         </Link>
 
         <button
@@ -95,6 +96,9 @@ export function LucasHeader() {
         id="lucas-menu"
         className={s.menuDialog}
         aria-label="Menu de navegação"
+        onClick={(event) => {
+          if (event.target === event.currentTarget) setOpen(false);
+        }}
         onCancel={(event) => {
           event.preventDefault();
           setOpen(false);
@@ -104,15 +108,18 @@ export function LucasHeader() {
           {open && (
             <motion.div
               className={s.menuPanel}
-              initial={{ opacity: 0, y: 0 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 0 }}
-              transition={{ duration: reduced ? 0 : 0.22 }}
+              initial="closed"
+              animate="open"
+              exit="closed"
+              variants={{
+                closed: { x: reduced ? 0 : "100%", opacity: reduced ? 0 : 1, transition: { duration: reduced ? 0 : 0.3, ease: [0.76, 0, 0.24, 1] } },
+                open: { x: 0, opacity: 1, transition: { duration: reduced ? 0 : 0.55, ease: [0.22, 1, 0.36, 1], delayChildren: reduced ? 0 : 0.15, staggerChildren: reduced ? 0 : 0.065 } },
+              }}
             >
+              <Image src={houseIcon} alt="" aria-hidden="true" className={s.menuHouse} sizes="420px" />
               <div className={s.menuTop}>
                 <span className={s.menuBrand}>
-                  LUCAS MARTINS
-                  <small>PRIMEIRO IMÓVEL</small>
+                  <Image src="/images/lucas-martins/wordmark-stacked-light.webp" alt="Lucas Martins" width={1361} height={582} sizes="128px" />
                 </span>
                 <button
                   autoFocus
@@ -125,29 +132,32 @@ export function LucasHeader() {
               </div>
 
               <div className={s.menuLinks}>
-                <span>SEU PRIMEIRO IMÓVEL COMEÇA AQUI</span>
+                <span>UM NOVO CAPÍTULO COMEÇA AQUI</span>
                 <nav aria-label="Navegação mobile">
-                  {lucasNav.map((item) => (
+                  {lucasNav.map((item, index) => (
+                    <motion.div key={item.href} variants={{ closed: { opacity: 0, y: reduced ? 0 : 24 }, open: { opacity: 1, y: 0, transition: { duration: reduced ? 0 : 0.45 } } }}>
                     <Link
                       href={item.href}
-                      key={item.href}
                       onClick={(event) => navigate(event, item.href)}
                     >
-                      {item.label}
+                      <span className={s.menuNumber}>0{index + 1}</span>
+                      <span>{item.label}</span>
+                      <ArrowUpRight size={24} aria-hidden="true" />
                     </Link>
+                    </motion.div>
                   ))}
                 </nav>
                 <Link
                   href="#contato"
-                  className={`${s.button} ${s.accentButton}`}
+                  className={s.menuContact}
                   onClick={(event) => navigate(event, "#contato")}
                 >
-                  Converse sobre o seu primeiro imóvel
+                  Vamos conversar <ArrowUpRight size={20} aria-hidden="true" />
                 </Link>
               </div>
 
               <p className={s.menuBottom}>
-                <HouseLine size={20} /> Curitiba e região, do seu jeito.
+                <span>ATENDIMENTO PESSOAL</span><span>São Paulo e região</span>
               </p>
             </motion.div>
           )}

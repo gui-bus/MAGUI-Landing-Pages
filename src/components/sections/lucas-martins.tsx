@@ -10,6 +10,8 @@ import { LucasFaqSection } from "@/components/lucas-martins/faq-section";
 import { LucasFooter } from "@/components/lucas-martins/footer";
 import { LucasMotion } from "@/components/lucas-martins/motion";
 import { LucasLivingSection } from "@/components/lucas-martins/living-section";
+import { LucasNumbersSection } from "@/components/lucas-martins/numbers-section";
+import { LucasTestimonialsSection } from "@/components/lucas-martins/testimonials-section";
 import {
   lucasDisplay,
   lucasMono,
@@ -29,9 +31,11 @@ export default function LucasMartinsLanding() {
       <LucasMarqueeSection />
       <LucasAboutSection />
       <LucasLivingSection />
+      <LucasNumbersSection />
       <LucasHousingSection />
       <LucasProcessSection />
       <LucasPropertiesSection />
+      <LucasTestimonialsSection />
       <LucasFaqSection />
       <div id="contato" className={s.bottomPlan}><LucasPlanSection /></div>
       <LucasFooter />

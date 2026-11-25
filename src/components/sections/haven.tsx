@@ -18,7 +18,7 @@ import { HavenVisitSection } from "@/components/haven/visit-section";
 export default function HavenLanding() {
   return (
     <main
-      className={`${havenDisplay.variable} ${havenText.variable} overflow-x-clip bg-[#F8F6F2] text-[#1F3545] [font-family:var(--font-haven-text)] [&_h1]:[font-family:var(--font-haven-display)] [&_h2]:[font-family:var(--font-haven-display)] [&_h3]:[font-family:var(--font-haven-display)]`}
+      className={`${havenDisplay.variable} ${havenText.variable} relative overflow-x-clip bg-[#F8F6F2] text-[#1F3545] [font-family:var(--font-haven-text)] [&_h1]:[font-family:var(--font-haven-display)] [&_h2]:[font-family:var(--font-haven-display)] [&_h3]:[font-family:var(--font-haven-display)]`}
     >
       <HavenHeader />
       <HavenHeroSection />

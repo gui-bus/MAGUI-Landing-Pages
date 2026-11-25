@@ -170,7 +170,7 @@ export function LucasContactSection() {
             >
               Fale comigo pelo WhatsApp ↗
             </Link>
-            <span className={s.mono}>Curitiba e região metropolitana</span>
+            <span className={s.mono}>São Paulo e região metropolitana</span>
           </div>
         </div>
       </div>

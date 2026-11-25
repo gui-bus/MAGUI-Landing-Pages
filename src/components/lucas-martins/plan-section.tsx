@@ -32,8 +32,8 @@ const steps = [
     question: "Onde você gostaria de morar?",
     hint: "A rotina importa tanto quanto a planta do apartamento.",
     options: [
-      "Curitiba",
-      "São José dos Pinhais",
+      "São Paulo",
+      "Santo André",
       "Estou aberto a conhecer a região",
     ],
   },
@@ -144,7 +144,7 @@ export function LucasPlanSection() {
                         <Check size={18} weight="bold" />
                         Buscar opções em{" "}
                         {answers[2] === "Estou aberto a conhecer a região"
-                          ? "Curitiba e região"
+                          ? "São Paulo e região"
                           : answers[2]}
                         .
                       </li>
@@ -254,16 +254,6 @@ export function LucasPlanSection() {
                   </motion.div>
                 )}
               </AnimatePresence>
-            </div>
-
-            <div className={s.planFooterBar}>
-              <span>
-                Respostas locais, sem cadastro. Você decide quando iniciar a
-                conversa.
-              </span>
-              <span className={s.mono}>
-                {done ? "03 / 03" : `0${step + 1} / 03`}
-              </span>
             </div>
           </div>
         </div>

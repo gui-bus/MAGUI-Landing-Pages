@@ -1,4 +1,5 @@
 import type { ComponentType } from "react";
+import lucasMartinsCover from "../../../public/images/lucas-martins/project-cover.webp";
 import LucasMartinsLanding from "@/components/sections/lucas-martins";
 import HelenaDuarteLanding from "@/components/sections/helena-duarte";
 import Landing02NachoLibre from "@/components/sections/nacho-libre";
@@ -47,13 +48,13 @@ export const sections: SectionEntry[] = [
     index: "23",
     slug: "lucas-martins",
     title: "Lucas Martins",
-    description: "Corretor especializado no primeiro imóvel em Curitiba e região, com orientação próxima e um caminho explicado do começo às chaves.",
+    description: "Corretor especializado no primeiro imóvel em São Paulo e região, com orientação próxima e um caminho explicado do começo às chaves.",
     category: "Landing Pages",
-    cardImage: "/images/lucas-martins/project-cover.webp",
+    cardImage: lucasMartinsCover.src,
     industry: "Imobiliário",
     projectType: "Especialista no primeiro imóvel",
     seoTitle: "MAGUI.studio | Lucas Martins",
-    seoDescription: "Lucas Martins: seu parceiro na compra do primeiro imóvel em Curitiba e região, com opções de apartamentos, orientação sobre o Minha Casa, Minha Vida e atendimento pessoal.",
+    seoDescription: "Lucas Martins: seu parceiro na compra do primeiro imóvel em São Paulo e região, com opções de apartamentos, orientação sobre o Minha Casa, Minha Vida e atendimento pessoal.",
     goal: "Aproximar a conquista do primeiro imóvel com informação clara, planejamento e atendimento acolhedor.",
     tags: ["Primeiro imóvel", "Minha Casa, Minha Vida", "Planejamento"],
     visible: true,

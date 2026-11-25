@@ -3,16 +3,12 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { Plus } from "@phosphor-icons/react";
 import { formatPrice, lucasProperties, lucasWhatsappHref } from "./data";
 import { LucasIcon } from "./icon";
 import s from "./page.module.css";
 
 export function LucasPropertiesSection() {
   const [city, setCity] = useState("Todas as regiões");
-  const [expanded, setExpanded] = useState<string | null>(null);
-  const reduced = useReducedMotion();
 
   const shown = lucasProperties.filter(
     (property) => city === "Todas as regiões" || property.place.endsWith(city),
@@ -21,6 +17,11 @@ export function LucasPropertiesSection() {
   return (
     <section id="imoveis" className={s.section}>
       <div className={s.container}>
+        <div className={s.sectionLogoDivider} aria-hidden="true">
+          <span />
+          <Image src="/images/lucas-martins/wordmark-stacked-dark.webp" alt="" width={1361} height={582} sizes="(max-width: 540px) 96px, 112px" />
+          <span />
+        </div>
         <div className={s.propertiesTop} data-lucas-reveal>
           <div className={s.propertiesTopTitle}>
             <span className={s.kicker}>ESPAÇO PARA OS SEUS PLANOS</span>
@@ -40,7 +41,7 @@ export function LucasPropertiesSection() {
             role="group"
             aria-label="Filtrar imóveis por região"
           >
-            {["Todas as regiões", "Curitiba", "São José dos Pinhais"].map(
+            {["Todas as regiões", "São Paulo", "Santo André"].map(
               (value) => (
                 <button
                   type="button"
@@ -109,65 +110,36 @@ export function LucasPropertiesSection() {
                       <small>A partir de</small>
                       <strong>{formatPrice(property.price)}</strong>
                     </div>
-                    <button
-                      type="button"
-                      className={s.propertyExpandBtn}
-                      aria-expanded={expanded === property.id}
-                      aria-controls={`lucas-property-${property.id}`}
-                      onClick={() =>
-                        setExpanded(
-                          expanded === property.id ? null : property.id,
-                        )
-                      }
-                    >
-                      Conhecer melhor
-                      <Plus
-                        size={16}
-                        weight="bold"
-                        className={expanded === property.id ? s.rotateIcon : ""}
-                      />
-                    </button>
                   </div>
 
-                  <AnimatePresence initial={false}>
-                    {expanded === property.id && (
-                      <motion.div
-                        id={`lucas-property-${property.id}`}
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: reduced ? 0 : 0.28 }}
-                        className={s.propertyDetails}
+                  <div className={s.propertyDetails}>
+                    <div className={s.propertyDetailsInner}>
+                      <p>{property.description}</p>
+                      <ul>
+                        {property.features.map((feature) => (
+                          <li key={feature}>
+                            <LucasIcon name="check" size={18} />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                      <Link
+                        href={lucasWhatsappHref(
+                          `Oi, Lucas! Quero conhecer o ${property.name} (${property.id}), em ${property.place}, e entender se ele faz sentido para meu primeiro imóvel.`,
+                        )}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={s.button}
                       >
-                        <div className={s.propertyDetailsInner}>
-                          <p>{property.description}</p>
-                          <ul>
-                            {property.features.map((feature) => (
-                              <li key={feature}>
-                                <LucasIcon name="check" size={18} />
-                                {feature}
-                              </li>
-                            ))}
-                          </ul>
-                          <Link
-                            href={lucasWhatsappHref(
-                              `Oi, Lucas! Quero conhecer o ${property.name} (${property.id}), em ${property.place}, e entender se ele faz sentido para meu primeiro imóvel.`,
-                            )}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={s.button}
-                          >
-                            Conversar sobre este apê
-                          </Link>
-                          <small>
-                            Valores e disponibilidade sujeitos a confirmação. O
-                            enquadramento em programas habitacionais e o
-                            financiamento dependem de análise.
-                          </small>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                        Conversar sobre este apê
+                      </Link>
+                      <small>
+                        Valores e disponibilidade sujeitos a confirmação. O
+                        enquadramento em programas habitacionais e o
+                        financiamento dependem de análise.
+                      </small>
+                    </div>
+                  </div>
                 </div>
               </div>
             </article>

@@ -26,7 +26,16 @@ export function HelenaFooter() {
         <nav aria-label="Navegação do rodapé"><p className={s.footerLabel}>Explore</p>{helenaNav.map(item => <Link key={item.href} href={item.href}>{item.label}</Link>)}</nav>
         <div className={s.footerContact}><p className={s.footerLabel}>Mais perto</p><Link href={helenaWhatsappHref()} target="_blank" rel="noopener noreferrer">Converse comigo no WhatsApp</Link><span>Curitiba e região metropolitana</span><span>Atendimento com hora marcada</span><Link href="#contato" className={s.footerAppointment}>Encontre o seu lugar</Link></div>
       </div>
-      <div className={s.footerBottom}><span>© {new Date().getFullYear()} Helena Duarte</span><span>Oferecido por <Link href="https://magui.studio" target="_blank" rel="noopener noreferrer">MAGUI.studio</Link></span><ScrollTopLink>Voltar ao topo</ScrollTopLink></div>
+      <div className={s.footerBottom}>
+        <span>© {new Date().getFullYear()} Helena Duarte</span>
+        <span>Oferecido por <Link href="https://magui.studio" target="_blank" rel="noopener noreferrer">MAGUI.studio</Link></span>
+        <ScrollTopLink className={s.backToTop}>
+          <span>Voltar ao topo</span>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M8 13V3M8 3L3.5 7.5M8 3L12.5 7.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </ScrollTopLink>
+      </div>
     </footer>
   );
 }

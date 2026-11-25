@@ -46,7 +46,7 @@ describe("Lucas Martins — primeiro imóvel", () => {
 
   it("filtra por região e mantém o contato vinculado ao imóvel escolhido", async () => {
     render(<LucasPropertiesSection />);
-    fireEvent.click(screen.getByRole("button", { name: "Curitiba" }));
+    fireEvent.click(screen.getByRole("button", { name: "São Paulo" }));
     expect(screen.queryByRole("heading", { name: "Viva Afonso" })).not.toBeInTheDocument();
     expect(screen.getByText("1 opção para conhecer")).toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", { name: "Conhecer melhor" }));
