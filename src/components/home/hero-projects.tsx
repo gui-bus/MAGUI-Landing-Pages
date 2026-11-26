@@ -6,6 +6,7 @@ import Image from "next/image";
 const heroProjects = [
   { slug: "piramide-parque-una", title: "Parque Una SJC", desktop: "/utils/home-projects/parque-una.webp?v=50160c2811" },
   { slug: "piramide-blog", title: "Blog Editorial", desktop: "/utils/home-projects/blog.webp?v=bfe40101c4" },
+  { slug: "viverde-itaipava", title: "Viverde Itaipava", desktop: "/utils/home-projects/viverde.webp" },
   { slug: "powervet", title: "POWERVET", desktop: "/utils/home-projects/powervet.webp?v=2e100d3297" },
   { slug: "arco-odontologia", title: "ARCO Odontologia", desktop: "/utils/home-projects/arco.webp?v=ccd88f0b7e" },
 ];
